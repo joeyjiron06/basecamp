@@ -1,0 +1,14 @@
+---
+import { Code as AstroCode } from "astro:components";
+import type { ComponentProps } from "astro/types";
+
+interface Props
+  extends Pick<ComponentProps<typeof AstroCode>, "code" | "lang"> {}
+---
+
+<AstroCode
+  {...Astro.props}
+  code={Astro.props.code.trim()}
+  class="p-3 rounded mb-3"
+  theme="github-light"
+/>

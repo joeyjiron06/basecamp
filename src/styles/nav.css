@@ -1,0 +1,32 @@
+header {
+  @apply border-b;
+
+  nav {
+    @apply flex flex-row items-center gap-3 justify-between p-2 mx-auto;
+  
+    & ul a {
+      @apply opacity-60 text-sm hover:opacity-80 transition-opacity duration-150 ease-in-out;
+  
+      &:has(svg) {
+        @apply p-2 rounded hover:bg-base-100;
+      }
+      
+      & svg {
+        @apply w-4 h-4;
+      } 
+    }
+  
+  
+    & ul {
+      @apply flex flex-row items-center gap-3;
+    }
+  }
+}
+
+footer {
+  @apply mx-auto;
+}
+
+p {
+  @apply text-fg-100;
+}

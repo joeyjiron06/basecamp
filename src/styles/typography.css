@@ -1,0 +1,28 @@
+/* HEADINGS */
+hgroup {
+  @apply flex flex-col gap-4;
+
+  & p {
+    @apply opacity-75;
+  }
+}
+
+h1 {
+  @apply font-extrabold text-4xl leading-tight;
+}
+
+h2 {
+  @apply font-bold text-2xl leading-tight;
+}
+
+h3 {
+  @apply font-semibold text-xl leading-tight;
+}
+
+small {
+  @apply text-xs;
+}
+
+p {
+  @apply opacity-60
+}

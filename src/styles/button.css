@@ -1,0 +1,31 @@
+button {
+  @apply px-4 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md  text-sm font-normal no-underline;
+
+  /* disabled */
+  &:disabled {
+    @apply pointer-events-none opacity-50;
+  }
+
+  /* default button */
+  & {
+  }
+
+
+  /* primary */
+  &.btn-primary {
+    @apply bg-primary text-primary-fg font-normal;
+
+    &:hover {
+      @apply bg-opacity-85;
+    }
+  }
+
+  /* outline */
+  &.btn-outline {
+    @apply border;
+  }
+
+
+  /* focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 */
+   /* h-9  */
+}
