@@ -1,9 +1,11 @@
 @import "./typography.css";
 @import "./nav.css";
 @import "./button.css";
+@import "./sidebar.css";
+@import "./accordian.css";
 
 body {
-  @apply pb-10 w-screen overflow-x-hidden;
+  @apply pb-10 w-screen min-h-screen overflow-x-hidden grid;
 }
 
 .card {

@@ -3,20 +3,28 @@ hgroup {
   @apply flex flex-col gap-4;
 
   & p {
-    @apply opacity-75;
+    @apply text-fg-200 font-normal;
   }
 }
 
 h1 {
-  @apply font-extrabold text-4xl leading-tight;
+  /* @apply font-extrabold text-4xl leading-tight; */
+
+  @apply scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl;
 }
 
 h2 {
-  @apply font-bold text-2xl leading-tight;
+  /* @apply font-bold text-2xl leading-tight; */
+  @apply scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0;
 }
 
 h3 {
-  @apply font-semibold text-xl leading-tight;
+  /* @apply font-semibold text-xl leading-tight; */
+  @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+}
+
+h4 {
+  @apply scroll-m-20 text-xl font-semibold tracking-tight;
 }
 
 small {
@@ -24,5 +32,11 @@ small {
 }
 
 p {
-  @apply opacity-60
+  @apply leading-7 text-fg pb-6;
+}
+
+[role="document"] {
+  section {
+    @apply pb-8;
+  }
 }

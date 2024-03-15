@@ -2,7 +2,7 @@ header {
   @apply border-b;
 
   nav {
-    @apply flex flex-row items-center gap-3 justify-between p-2 mx-auto;
+    @apply flex flex-row items-center gap-3 justify-between p-2 mx-auto bg-base;
   
     & ul a {
       @apply opacity-60 text-sm hover:opacity-80 transition-opacity duration-150 ease-in-out;
@@ -25,8 +25,4 @@ header {
 
 footer {
   @apply mx-auto;
-}
-
-p {
-  @apply text-fg-100;
 }

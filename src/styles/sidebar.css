@@ -1,0 +1,21 @@
+aside {
+  nav {
+    @apply w-56 h-[calc(100vh-3rem)] px-4 pt-6 overflow-y-scroll; 
+
+    ul {
+      @apply mb-4;
+    }
+  
+    ul li {
+      @apply text-sm mb-2;
+    }
+  
+    ul li a {
+      @apply no-underline cursor-pointer text-fg-200 py-1 text-sm;
+  
+      &:hover {
+        @apply underline;
+      }
+    }
+  }
+}
