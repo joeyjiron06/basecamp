@@ -4,14 +4,9 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
-			maxWidth: ({ theme }) => ({
-				// '2xl': '42rem',
-				// '3xl': '48rem',
-				// '4xl': '56rem',
-				// 'page': '64rem',
+			maxWidth: {
 				'page': '72rem',
-				// '7xl': '80rem',
-			}),
+			},
 			colors: {
 				// for primary buttons, links etc
 				"primary": "black",

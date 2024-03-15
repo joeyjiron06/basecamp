@@ -5,7 +5,8 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://github.com/joeyjiron06/grizzly-css',
+  site: 'https://github.com/joeyjiron06',
+  base: '/grizzly-css',
   integrations: [
     tailwind({ nesting: true }),
     mdx({
