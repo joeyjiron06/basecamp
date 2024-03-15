@@ -3,7 +3,7 @@ hgroup {
   @apply flex flex-col gap-4;
 
   & p {
-    @apply text-fg-200 font-normal;
+    @apply text-fg-200 font-normal dark:opacity-85;
   }
 }
 

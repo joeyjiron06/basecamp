@@ -3,13 +3,14 @@
 @import "./button.css";
 @import "./sidebar.css";
 @import "./accordian.css";
+@import "./layout.css";
 
 body {
   @apply pb-10 w-screen min-h-screen overflow-x-hidden grid;
 }
 
 .card {
-  @apply p-4 rounded bg-neutral-100;
+  @apply p-4 rounded bg-base-100 dark:bg-transparent dark:border dark:border-base-100;
 }
 
 code {

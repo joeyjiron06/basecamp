@@ -11,10 +11,10 @@ aside {
     }
   
     ul li a {
-      @apply no-underline cursor-pointer text-fg-200 py-1 text-sm;
-  
+      @apply no-underline cursor-pointer text-fg-200 py-1 text-sm opacity-60 transition-opacity duration-150 ease-in-out;
+
       &:hover {
-        @apply underline;
+        @apply underline opacity-80;
       }
     }
   }

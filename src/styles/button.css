@@ -22,7 +22,11 @@ button {
 
   /* outline */
   &.btn-outline {
-    @apply border;
+    @apply border dark:border-base-100 transition-[background-color] duration-150 ease-in-out;
+
+    &:hover {
+      @apply bg-base-100 bg-opacity-85;
+    }
   }
 
 
