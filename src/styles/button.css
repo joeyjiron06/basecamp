@@ -1,35 +1,22 @@
-button {
-  @apply px-4 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md  text-sm font-normal no-underline;
+.btn {
+  /* i like buttons slightly smaller than daisyui comes with */
+  @apply h-9 min-h-9;
 
-  /* disabled */
-  &:disabled {
-    @apply pointer-events-none opacity-50;
+  /* for styling icons */
+  & svg {
+    @apply w-4 h-4;
   }
+}
 
-  /* default button */
-  & {
-  }
+button,
+[role="button"],
+input[type="submit"],
+input[type="cancel"],
+input[type="reset"],
+input[type="button"] {
+ @apply btn;
+}
 
-
-  /* primary */
-  &.btn-primary {
-    @apply bg-primary text-primary-fg font-normal;
-
-    &:hover {
-      @apply bg-opacity-85;
-    }
-  }
-
-  /* outline */
-  &.btn-outline {
-    @apply border dark:border-base-100 transition-[background-color] duration-150 ease-in-out;
-
-    &:hover {
-      @apply bg-base-100 bg-opacity-85;
-    }
-  }
-
-
-  /* focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 */
-   /* h-9  */
+input[type="cancel"] {
+  @apply btn-ghost;
 }

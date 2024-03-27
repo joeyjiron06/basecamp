@@ -1,0 +1,35 @@
+---
+layout: ../../../layouts/docs.astro
+title: Checkbox
+subtitle: Classless checkbox component
+---
+
+import Code from '~/components/code.astro';
+import RawCSS from '~/styles/checkbox.css?raw';
+import CodePreview from '~/components/codePreview.astro';
+
+## CSS
+
+<Code lang='postcss' code={RawCSS} />
+
+## Usage
+
+<CodePreview 
+  customClasses="not-prose"
+  code={`
+<fieldset>
+  <label>
+    <span>Remember me</span>
+    <input type='checkbox' />
+  </label>
+</fieldset>`}
+  lang='html'
+>
+  <fieldset className='max-w-52'>
+    <label>
+      <span>Remember me</span>
+      <input type='checkbox' />
+    </label>
+  </fieldset>
+</CodePreview>
+

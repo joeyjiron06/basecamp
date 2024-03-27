@@ -1,181 +1,34 @@
 ---
-import BaseLayout from "../layouts/base.astro";
-import {
-  CodeIcon,
-  StarIcon,
-  Maximize2Icon,
-  SunriseIcon,
-  CpuIcon,
-  CopyIcon,
-} from "astro-feather";
-import Code from "~/components/Code.astro";
-import GrizzlyLogo from "~/assets/images/grizzly-logo.png";
+import { GithubIcon, MoonIcon } from "astro-feather";
+import BaseLayout from "~/layouts/base.astro";
 
-const ProjectName = "Grizzly CSS";
+const ProjectName = "Snips";
 ---
 
-<BaseLayout title="Welcome to Electric CSS">
-  <main>
-    <section class="text-center py-6 space-y-4">
+<BaseLayout title=`Welcome to ${ProjectName}!`>
+  <main
+    class="h-full w-full max-w-page px-4 md:px-4 mx-auto pt-6 flex items-center justify-center"
+  >
+    <div class="text-center space-y-6">
       <hgroup>
-        <h1>
-          Build <u>your</u> own <br />
-
-          <span class="">CSS Framework</span>
-        </h1>
-        <p>Beautifully designed css that you copy and paste into your apps.</p>
-      </hgroup>
-
-      <div class="flex items-center justify-center">
-        <img
-          src={GrizzlyLogo.src}
-          alt="Grizzly logo"
-          class="w-44 aspect-square"
-        />
-      </div>
-      <p>Write HTML, Add {ProjectName}, and Voilà!</p>
-
-      <div class="flex gap-3 justify-center">
-        <button class="btn-primary">Get Started</button>
-        <button class="btn-outline">Examples</button>
-      </div>
-    </section>
-
-    <section id="features" class="text-center space-y-6">
-      <hgroup class="py-16">
-        <h2>An Enhanced HTML Reset for Tailwind</h2>
+        <h1 class="sm:text-6xl">Save Time Building Websites</h1>
         <p>
-          {ProjectName} is the perfect foundation for a sleek and lightweight design
-          system
+          Discover a vast collection of reusable code snippets designed to
+          streamline your website development process.
         </p>
       </hgroup>
 
-      <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
-        <div class="card">
-          <hgroup>
-            <CodeIcon />
-            <h3>Class-light and Semantic</h3>
-            <p>
-              {ProjectName} thrives on simplicity, directly styling your HTML tags
-              with fewer than 10 .classes overall.
-            </p>
-          </hgroup>
-        </div>
-
-        <div class="card">
-          <hgroup>
-            <CopyIcon />
-            <h3>Copy and Paste to Your Project</h3>
-            <p>
-              Create your own custom CSS design system by copy and pasting the
-              necessary code into your project. This approach ensures that you
-              have complete control over the styling and behavior of your UI.
-            </p>
-          </hgroup>
-        </div>
-
-        <div class="card">
-          <hgroup>
-            <StarIcon />
-            <h3>Great Styles with Just CSS</h3>
-            <p>
-              {ProjectName} operates effortlessly without any additional overhead.
-              It seamlessly achieves elegant and straightforward styles using pure
-              HTML markup, without relying on dependencies, package managers, external
-              files, or JavaScript.
-            </p>
-          </hgroup>
-        </div>
-
-        <div class="card">
-          <hgroup>
-            <Maximize2Icon />
-            <h3>Responsive Everything</h3>
-            <p>
-              Achieve seamless elegance across all devices with {ProjectName}.
-              Our font sizes and spacings adapt naturally to screen widths,
-              ensuring a consistent and refined appearance without the need for
-              additional classes or configuration.
-            </p>
-          </hgroup>
-        </div>
-
-        <div class="card">
-          <hgroup>
-            <SunriseIcon />
-            <h3>Light or Dark Mode</h3>
-            <p>
-              {ProjectName} includes two user-friendly, neutral color schemes by
-              default: light and dark. The best part? It dynamically adjusts to users
-              preferred color scheme without requiring JavaScript.
-            </p>
-          </hgroup>
-        </div>
-
-        <div class="card">
-          <hgroup>
-            <CpuIcon />
-            <h3>Optimized Performance</h3>
-            <p>
-              {ProjectName} balances speed and elegance, avoiding complexity and
-              excess files. {ProjectName} ensures lean HTML, reduces memory usage
-              by avoiding excessive CSS specificity, and minimizes loaded files.
-            </p>
-          </hgroup>
-        </div>
+      <div class="flex items-center justify-center gap-4">
+        <a
+          class="btn btn-primary"
+          href=`${import.meta.env.BASE_URL}/introduction`
+        >
+          Get Started
+        </a>
+        <a class="btn btn-outline" href="https://github.com/joeyjiron06/snips">
+          <GithubIcon />Github
+        </a>
       </div>
-    </section>
-
-    <section>
-      <hgroup class="text-center py-16">
-        <h2>Embrace the Power of Less</h2>
-        <p>
-          A strong design foundation thrives on simplicity and ease of
-          maintenance.
-        </p>
-      </hgroup>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <p>😌 {ProjectName}</p>
-
-          <Code
-            lang="html"
-            code=`
-<form>
-  <input type="text" />
-  <button type="submit">Action</button>
-</form>`
-          />
-        </div>
-
-        <div>
-          <p>utility css framework</p>
-
-          <Code
-            lang="html"
-            code=`
-<div class="container display-flex my-md mx-sm">
-  <form class="form shadow-md my-md mx-sm align-center">
-    <div class="input-wrapper border-radius-sm">
-      <input type="text" class="input text-color-gray placeholder-color-light-gray focus-outline-blue" />
     </div>
-    <div class="button-wrapper border-radius-sm">
-      <button type="submit" class="button bg-color-blue text-color-white focus-light-blue hover-light-blue">
-        Action
-      </button>
-    </div>
-  </form>
-</div>`
-          />
-        </div>
-      </div>
-    </section>
   </main>
 </BaseLayout>
-
-<style>
-  section {
-    @apply max-w-page mx-auto px-2 md:px-8;
-  }
-</style>

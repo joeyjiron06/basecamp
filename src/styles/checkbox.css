@@ -1,0 +1,13 @@
+input[type="checkbox"] {
+  @apply checkbox;
+}
+
+fieldset {
+  label:has(input[type="checkbox"]) {
+    @apply label cursor-pointer;
+
+    & *:not(input[type="checkbox"]) {
+      @apply label-text;
+    }
+  }
+}

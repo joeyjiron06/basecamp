@@ -1,14 +1,29 @@
 ---
 import { Code as AstroCode } from "astro:components";
 import type { ComponentProps } from "astro/types";
+import CopyButton from "./copyButton";
+import clsx from "clsx";
+import type { boolean, string } from "astro/zod";
 
-interface Props
-  extends Pick<ComponentProps<typeof AstroCode>, "code" | "lang"> {}
+export interface Props
+  extends Pick<ComponentProps<typeof AstroCode>, "code" | "lang" | "wrap"> {
+  rounded?: boolean;
+  customClasses?: string;
+}
+
+const code = Astro.props.code.trim();
+const rounded = Astro.props.rounded ?? true;
 ---
 
-<AstroCode
-  {...Astro.props}
-  code={Astro.props.code.trim()}
-  class="p-3 rounded mb-3"
-  theme="github-light"
-/>
+<div class="relative not-prose">
+  <AstroCode
+    {...Astro.props}
+    code={code}
+    class={clsx("p-3", rounded && "rounded", Astro.props.customClasses)}
+    theme="github-dark"
+  />
+
+  <div class="absolute top-3 right-3">
+    <CopyButton text={code} client:visible />
+  </div>
+</div>

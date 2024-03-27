@@ -3,23 +3,19 @@ hgroup {
   @apply flex flex-col gap-4;
 
   & p {
-    @apply text-fg-200 font-normal dark:opacity-85;
+    @apply font-normal opacity-85;
   }
 }
 
 h1 {
-  /* @apply font-extrabold text-4xl leading-tight; */
-
   @apply scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl;
 }
 
 h2 {
-  /* @apply font-bold text-2xl leading-tight; */
   @apply scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0;
 }
 
 h3 {
-  /* @apply font-semibold text-xl leading-tight; */
   @apply scroll-m-20 text-2xl font-semibold tracking-tight;
 }
 
@@ -27,16 +23,36 @@ h4 {
   @apply scroll-m-20 text-xl font-semibold tracking-tight;
 }
 
+/* modifiers */
+
 small {
   @apply text-xs;
 }
 
-p {
-  @apply leading-7 text-fg pb-6;
+em {
+  @apply italic;
 }
 
-[role="document"] {
-  section {
-    @apply pb-8;
-  }
+b {
+  @apply font-bold;
+}
+
+strong {
+  @apply font-extrabold;
+}
+
+i {
+  @apply italic;
+}
+
+mark {
+  @apply bg-base-200 px-2;
+}
+
+del {
+  @apply line-through;
+}
+
+ins {
+  @apply underline;
 }

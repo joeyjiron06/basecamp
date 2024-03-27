@@ -1,0 +1,32 @@
+---
+layout: ../../../layouts/docs.astro
+title: Button
+subtitle: Classless button component
+---
+
+import Code from '~/components/code.astro';
+import ButtonCSS from '~/styles/button.css?raw';
+import CodePreview from '~/components/codePreview.astro';
+
+A dead simple CSS rule for styling buttons by default
+
+## CSS
+
+<Code lang='postcss' code={ButtonCSS} />
+
+## Usage
+
+<CodePreview 
+  class="not-prose"
+  code={`
+<button>Click me!</button>
+<input type='submit' />
+  `}
+  lang='html'
+>
+  <div class='space-x-4'>
+    <button>Click me!</button>
+    <input type='submit' />
+  </div>
+</CodePreview>
+

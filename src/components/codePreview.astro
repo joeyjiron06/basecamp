@@ -1,0 +1,47 @@
+---
+import Code from "./code.astro";
+import type { Props as CodeProps } from "./code.astro";
+import type { ComponentProps } from "astro/types";
+import CopyButton from "./copyButton";
+
+interface Props extends CodeProps {}
+---
+
+<div class="bg-base-200 border border-base-content border-opacity-10 rounded">
+  <div class="px-6 py-4">
+    <slot />
+  </div>
+
+  <Code {...Astro.props} wrap rounded={false} customClasses="px-6 py-4" />
+</div>
+<!-- 
+<div role="tablist" class="tabs tabs-lifted">
+  <input
+    type="radio"
+    name="code-tabs"
+    role="tab"
+    class="tab"
+    aria-label="Preview"
+    checked
+  />
+  <div
+    role="tabpanel"
+    class="tab-content bg-base-100 border-base-300 rounded-box p-6 heropattern-diagonallines-neutral-700/50"
+  >
+    <slot />
+  </div>
+
+  <input
+    type="radio"
+    name="code-tabs"
+    role="tab"
+    class="tab"
+    aria-label="Code"
+  />
+  <div
+    role="tabpanel"
+    class="tab-content bg-base-100 border-base-300 rounded-box"
+  >
+    <Code {...Astro.props} wrap />
+  </div>
+</div> -->

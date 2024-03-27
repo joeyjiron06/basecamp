@@ -1,0 +1,41 @@
+:not(li) > details {
+  @apply w-full border-b border-b-base-300;
+
+  /* summary title */
+  summary {
+    @apply cursor-pointer outline-none w-full pe-12 p-4 min-h-12 relative block font-medium;
+
+    &::-webkit-details-marker {
+      @apply hidden;
+    }
+
+    &:focus-visible {
+      @apply outline-base-content outline outline-2 outline-offset-2;
+    }
+
+    &:after {
+      @apply absolute block h-2 w-2 translate-y-[-100%] rotate-[45deg] transition-all ease-out duration-150;
+      top: 1.9rem;
+      inset-inline-end: 1.4rem;
+      content: "";
+      transform-origin: 75% 75%;
+      box-shadow: 2px 2px;
+      pointer-events: none;
+    }
+  }
+
+  /* content */
+  & :not(summary) {
+    @apply px-4;
+
+    &:last-child {
+      @apply pb-4;
+    }
+  }
+
+  &[open] {
+    summary:after {
+      @apply translate-y-[-50%] rotate-[225deg];
+    }
+  }
+}

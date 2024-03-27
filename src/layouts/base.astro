@@ -1,20 +1,24 @@
 ---
 import "../styles/global.css";
-import { GithubIcon, MoonIcon } from "astro-feather";
-import GrizzlyLogo from "~/assets/images/grizzly-logo.png";
+import { GithubIcon, MoonIcon, MenuIcon } from "astro-feather";
+import TwitterLogo from "~/components/twitterLogo.astro";
+import Logo from "~/components/logo.astro";
 
 interface Props {
   title: string;
+  autoExpandSidebar?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, autoExpandSidebar } = Astro.props;
+
+const ProjectName = "Snips";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Electric CSS Framework" />
+    <meta name="description" content="Home place for my code snippets" />
     <meta name="viewport" content="width=device-width" />
     <link
       rel="icon"
@@ -23,9 +27,247 @@ const { title } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <header class="sticky">
+  <body class=`drawer ${autoExpandSidebar ? "lg:drawer-open" : ""}`>
+    <input id="drawer" type="checkbox" class="drawer-toggle" />
+
+    <div class="drawer-content flex flex-col">
+      <!-- Navbar -->
+      <div
+        class="w-full navbar max-w-page mx-auto sticky top-0 left-0 bg-base-100 z-30"
+      >
+        <div class="flex-none">
+          <label
+            for="drawer"
+            aria-label="open sidebar"
+            class="btn btn-square btn-ghost lg:invisible"
+          >
+            <MenuIcon />
+          </label>
+        </div>
+        <div class="flex-1 px-2 mx-2 logo lg:invisible">
+          <Logo />
+        </div>
+        <nav class="flex-none">
+          <ul class="menu menu-horizontal">
+            <li class="hidden sm:block">
+              <a href=`${import.meta.env.BASE_URL}/docs`>Docs</a>
+            </li>
+            <li>
+              <a href="https://github.com/joeyjiron06/snips">
+                <GithubIcon customClasses="w-4 h-4" />
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/joeyjiron06">
+                <TwitterLogo customClasses="w-4 h-4" />
+              </a>
+            </li>
+            <li>
+              <a href={import.meta.env.BASE_URL}>
+                <MoonIcon customClasses="w-4 h-4" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <slot />
+    </div>
+
+    <div class="drawer-side z-40">
+      <label for="drawer" aria-label="close sidebar" class="drawer-overlay">
+      </label>
+
+      <aside>
+        <div class="logo py-6 px-4 sticky top-0 bg-base-100 z-30">
+          <Logo />
+        </div>
+
+        <nav>
+          <ul>
+            <li>
+              <details open>
+                <summary>Docs</summary>
+                <ul>
+                  <li>
+                    <a href=`${import.meta.env.BASE_URL}/introduction`>
+                      Introduction
+                    </a>
+                  </li>
+                  <li>
+                    <a href=`${import.meta.env.BASE_URL}/about`>About</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/joeyjiron06/snips">Github</a>
+                  </li>
+                </ul>
+              </details>
+            </li>
+
+            <li>
+              <details open>
+                <summary>DaisyUI</summary>
+                <ul>
+                  <li>
+                    <a href=`${import.meta.env.BASE_URL}/daisyui`>Motivation</a>
+
+                    <a href=`${import.meta.env.BASE_URL}/daisyui/config`>
+                      Config
+                    </a>
+
+                    <a href=`${import.meta.env.BASE_URL}/daisyui/typography`>
+                      Typography
+                    </a>
+
+                    <a href=`${import.meta.env.BASE_URL}/daisyui/layout`>
+                      Layout
+                    </a>
+
+                    <li>
+                      <details open>
+                        <summary>Components</summary>
+
+                        <ul>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/accordion`
+                            >
+                              Accordion
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/button`
+                            >
+                              Button
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/checkbox`
+                            >
+                              Checkbox
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/dropdown`
+                            >
+                              Dropdown
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/input`
+                            >
+                              Input
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/link`
+                            >
+                              Link
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/loading`
+                            >
+                              Loading
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/modal`
+                            >
+                              Modal
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/nav`
+                            >
+                              Nav
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/progress`
+                            >
+                              Progress
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/radios`
+                            >
+                              Radios
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/range`
+                            >
+                              Range
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/select`
+                            >
+                              Select
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/switch`
+                            >
+                              Switch
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/table`
+                            >
+                              Table
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/textarea`
+                            >
+                              Textarea
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href=`${import.meta.env.BASE_URL}/daisyui/components/tooltip`
+                            >
+                              Tooltip
+                            </a>
+                          </li>
+                        </ul>
+                      </details>
+                    </li>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- <header class="sticky">
       <nav class="max-w-page">
         <a href={import.meta.env.BASE_URL} class="flex items-center gap-2">
           <img src={GrizzlyLogo.src} alt="Grizzly CSS logo" class="w-6 h-6" />
@@ -60,11 +302,9 @@ const { title } = Astro.props;
           </a>
         </ul>
       </nav>
-    </header>
+    </header> -->
 
-    <slot />
-
-    <footer class="max-w-page">
+    <!-- <footer class="max-w-page">
       <nav class="flex flex-wrap gap-8 px-4 justify-between">
         <div class="flex-shrink-0">
           <small> Designed and built by Joey Jiron. </small>
@@ -98,11 +338,12 @@ const { title } = Astro.props;
           <ul>
             <li><strong>About</strong></li>
             <li>
-              <a href=`${import.meta.env.BASE_URL}/docs/mission`>Mission</a>
+              <a href=`${import.meta.env.BASE_URL}/daisyui/mission`>Mission</a>
             </li>
             <li>
-              <a href=`${import.meta.env.BASE_URL}/docs/usage-scenarios`
-                >Usage Scenarios</a>
+              <a href=`${import.meta.env.BASE_URL}/daisyui/usage-scenarios`
+                >Usage Scenarios</a
+              >
             </li>
           </ul>
 
@@ -110,19 +351,20 @@ const { title } = Astro.props;
             <li><strong>Docs</strong></li>
             <li><a href=`${import.meta.env.BASE_URL}/docs`>Get Started</a></li>
             <li>
-              <a href=`${import.meta.env.BASE_URL}/docs/layout`>Layout</a>
+              <a href=`${import.meta.env.BASE_URL}/daisyui/layout`>Layout</a>
             </li>
             <li>
-              <a href=`${import.meta.env.BASE_URL}/docs/content`>Content</a>
+              <a href=`${import.meta.env.BASE_URL}/daisyui/content`>Content</a>
             </li>
-            <li><a href=`${import.meta.env.BASE_URL}/docs/forms`>Forms</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/daisyui/forms`>Forms</a></li>
             <li>
-              <a href=`${import.meta.env.BASE_URL}/docs/components`
-                >Components</a>
+              <a href=`${import.meta.env.BASE_URL}/daisyui/components`
+                >Components</a
+              >
             </li>
           </ul>
         </div>
       </nav>
-    </footer>
+    </footer> -->
   </body>
 </html>

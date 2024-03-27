@@ -1,21 +1,4 @@
-aside {
-  nav {
-    @apply w-56 h-[calc(100vh-3rem)] px-4 pt-6 overflow-y-scroll; 
 
-    ul {
-      @apply mb-4;
-    }
-  
-    ul li {
-      @apply text-sm mb-2;
-    }
-  
-    ul li a {
-      @apply no-underline cursor-pointer text-fg-200 py-1 text-sm opacity-60 transition-opacity duration-150 ease-in-out;
-
-      &:hover {
-        @apply underline opacity-80;
-      }
-    }
-  }
+.drawer-side aside {
+  @apply menu px-4 pb-4 pt-0 w-80 min-h-full bg-base-100;
 }
