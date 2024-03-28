@@ -11,7 +11,6 @@
 button,
 [role="button"],
 input[type="submit"],
-input[type="cancel"],
 input[type="reset"],
 input[type="button"] {
  @apply btn;

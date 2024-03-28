@@ -1,13 +1,46 @@
 input[type="checkbox"] {
-  @apply checkbox;
+  @apply checkbox w-4 h-4 mr-3 align-middle m-0;
 }
 
-fieldset {
-  label:has(input[type="checkbox"]) {
-    @apply label cursor-pointer;
+label:has(input[type="checkbox"]) {
+  @apply label cursor-pointer justify-start;
 
-    & *:not(input[type="checkbox"]) {
-      @apply label-text;
-    }
+  /* label text */
+  & *:not(input[type="checkbox"]) {
+    @apply label-text;
   }
+
+  /* label text when input is disabled  */
+  & input[type="checkbox"]:disabled + *{
+    @apply opacity-25;
+  }
+
+  /* disabled cursor on whole container */
+  &:has(input[type="checkbox"]:disabled) {
+    @apply cursor-not-allowed;
+  }
+}
+
+/* 
+horizontal stacking 
+margin on right except the last one 
+*/
+
+input[type=checkbox]~label:not(:last-of-type) {
+  @apply mr-6;
+}
+
+/* align the label to the middle  */
+input[type=checkbox]~label {
+  @apply align-middle;
+}
+
+/* validation states */
+
+input[type=checkbox][aria-invalid=true] {
+  @apply checkbox-error;
+}
+
+input[type=checkbox][aria-invalid=false] {
+  @apply checkbox-success;
 }

@@ -3,6 +3,7 @@ import "../styles/global.css";
 import { GithubIcon, MoonIcon, MenuIcon } from "astro-feather";
 import TwitterLogo from "~/components/twitterLogo.astro";
 import Logo from "~/components/logo.astro";
+import clsx from "clsx";
 
 interface Props {
   title: string;
@@ -40,19 +41,27 @@ const ProjectName = "Snips";
 
     <div class="drawer-content flex flex-col">
       <!-- Navbar -->
-      <div
+      <header
         class="w-full navbar max-w-page mx-auto sticky top-0 left-0 bg-base-100 z-30"
       >
         <div class="flex-none">
           <label
             for="drawer"
             aria-label="open sidebar"
-            class="btn btn-square btn-ghost lg:invisible"
+            class={clsx(
+              "btn btn-square btn-ghost",
+              autoExpandSidebar && "lg:invisible",
+            )}
           >
             <MenuIcon />
           </label>
         </div>
-        <div class="flex-1 px-2 mx-2 logo lg:invisible">
+        <div
+          class={clsx(
+            "flex-1 px-2 mx-2 logo",
+            autoExpandSidebar && "lg:invisible",
+          )}
+        >
           <Logo />
         </div>
         <nav class="flex-none">
@@ -77,7 +86,7 @@ const ProjectName = "Snips";
             </li>
           </ul>
         </nav>
-      </div>
+      </header>
 
       <slot />
     </div>
@@ -117,7 +126,9 @@ const ProjectName = "Snips";
                 <summary>DaisyUI</summary>
                 <ul>
                   <li>
-                    <a href=`${import.meta.env.BASE_URL}/daisyui`>Motivation</a>
+                    <a href=`${import.meta.env.BASE_URL}/daisyui`>
+                      Getting Started
+                    </a>
 
                     <a href=`${import.meta.env.BASE_URL}/daisyui/config`>
                       Config

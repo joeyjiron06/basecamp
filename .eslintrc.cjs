@@ -1,7 +1,10 @@
 module.exports = {
   extends: [
+    "eslint:recommended",
     "plugin:astro/recommended",
-    "plugin:astro/jsx-a11y-strict"
+    "plugin:astro/jsx-a11y-strict",
+    "plugin:mdx/recommended",
+    "plugin:prettier/recommended",
   ],
   overrides: [
     {
@@ -20,15 +23,57 @@ module.exports = {
         // "astro/no-set-html-directive": "error"
       },
     },
+
     {
-      "files": ["*.ts", "*.tsx"],
-      "extends": [
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint"
+      files: ['*.ts'],
+      parser: '@typescript-eslint/parser',
+      extends: ['plugin:@typescript-eslint/recommended'],
+      rules: {},
+    },
+    {
+      files: ['*.d.ts'],
+      rules: {
+        '@typescript-eslint/triple-slash-reference': 'off',
+      },
+    },
+    {
+      files: ['*.tsx'],
+      parser: '@typescript-eslint/parser',
+      plugins: ['react', '@typescript-eslint'],
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json'],
+      },
+      env: {
+        node: false,
+        browser: true,
+      },
+      extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
-      "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint"]
+    },
+    {
+      files: '*.cjs',
+      env: {
+        node: true,
+        commonjs: true,
+      },
+    },
+    {
+      files: "*.mjs",
+      end: {
+        node: true,
+        es6: true,
+      }
     }
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
