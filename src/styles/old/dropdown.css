@@ -1,0 +1,11 @@
+details.dropdown {
+  summary {
+    @apply list-none cursor-pointer;
+  }
+
+  &[open] summary:before {
+    @apply block z-[1] fixed w-screen h-screen inset-0 cursor-default;
+    background: 0 0;
+    content: "";
+  }
+}

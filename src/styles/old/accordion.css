@@ -1,16 +1,20 @@
-:not(li) > details {
-  @apply w-full border-b border-b-base-300;
+:not(li) > details:not(.dropdown) {
+  @apply w-full border-b border-b-gray-300;
 
   /* summary title */
   summary {
-    @apply cursor-pointer outline-none w-full pe-12 p-4 min-h-12 relative block font-medium;
+    @apply cursor-pointer outline-none w-full pe-12 p-4 min-h-12 relative block font-medium list-none text-sm;
 
     &::-webkit-details-marker {
       @apply hidden;
     }
 
+    &:hover {
+      @apply underline;
+    }
+
     &:focus-visible {
-      @apply outline-base-content outline outline-2 outline-offset-2;
+      @apply outline-gray-500 outline outline-2 outline-offset-2;
     }
 
     &:after {

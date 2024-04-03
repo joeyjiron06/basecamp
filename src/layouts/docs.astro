@@ -1,14 +1,15 @@
 ---
-import BaseLayout from "./base.astro";
+import BaseLayout from './base.astro';
 
 const { title, subtitle } = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout title={title} autoExpandSidebar={true}>
-  <article class="w-full max-w-page px-4 md:px-4 mx-auto pt-6
-  prose">
-    <h1>{title}</h1>
-    {subtitle ? <p>{subtitle}</p> : null}
+  <article class='w-full max-w-page px-4 md:px-4 mx-auto pt-6'>
+    <hgroup>
+      <h1>{title}</h1>
+      {subtitle ? <p>{subtitle}</p> : null}
+    </hgroup>
     <slot />
   </article>
 </BaseLayout>

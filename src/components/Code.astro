@@ -1,29 +1,41 @@
 ---
-import { Code as AstroCode } from "astro:components";
-import type { ComponentProps } from "astro/types";
-import CopyButton from "./copyButton";
-import clsx from "clsx";
-import type { boolean, string } from "astro/zod";
+import { Code as AstroCode } from 'astro:components';
+import type { ComponentProps } from 'astro/types';
+import CopyButton from './copyButton';
+import clsx from 'clsx';
+import type { boolean, string } from 'astro/zod';
 
 export interface Props
-  extends Pick<ComponentProps<typeof AstroCode>, "code" | "lang" | "wrap"> {
+  extends Pick<
+    ComponentProps<typeof AstroCode>,
+    'code' | 'lang' | 'wrap' | 'inline'
+  > {
   rounded?: boolean;
   customClasses?: string;
 }
 
 const code = Astro.props.code.trim();
 const rounded = Astro.props.rounded ?? true;
+const inline = Astro.props.inline;
 ---
 
-<div class="relative not-prose">
+<div class={clsx(inline ? 'inline' : 'relative')}>
   <AstroCode
     {...Astro.props}
     code={code}
-    class={clsx("p-3", rounded && "rounded", Astro.props.customClasses)}
-    theme="github-dark"
+    class={clsx(
+      Astro.props.inline ? 'px-2 py-1' : 'p-3',
+      rounded && 'rounded',
+      Astro.props.customClasses,
+    )}
+    theme='github-dark'
   />
 
-  <div class="absolute top-3 right-3">
-    <CopyButton text={code} client:visible />
-  </div>
+  {
+    Astro.props.inline ? null : (
+      <div class='absolute top-3 right-3'>
+        <CopyButton text={code} client:visible />
+      </div>
+    )
+  }
 </div>

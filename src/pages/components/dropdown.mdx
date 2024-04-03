@@ -1,0 +1,95 @@
+---
+layout: ../../../layouts/docs.astro
+title: Dropdown
+subtitle: Create dropdown menus and custom selects with minimal and semantic HTML, without JavaScript.
+---
+
+import Code from '~/components/code.astro';
+import RawCSS from '~/styles/checkbox.css?raw';
+import CodePreview from '~/components/codePreview.astro';
+
+Dropdowns are already supported with [DaisyUI](https://daisyui.com/components/dropdown/) using a number of different methods. I prefer the option that uses semantic HTML using the `details & summary` html elments. All you need to do is add the class of `dropdown` to style it as a dropdown. If you don't add this class it will be styled as an [Accordian](./accordion.mdx)
+
+However, one shortcoming of this approach is that after you click on the dropdown you have to click it again to close it. This approach isn't very intuitive for users. DaisyUI offers another approach using focus which requires extra code and more things to remember when developing. 
+
+I took a playbook from Pico
+
+## Usage
+
+<CodePreview 
+  code={`
+<details class="dropdown">
+  <summary>open or close</summary>
+  <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</details>`}
+  lang='html'
+>
+  <details class="dropdown">
+    <summary>open or close</summary>
+    <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+      <li><a>Item 1</a></li>
+      <li><a>Item 2</a></li>
+    </ul>
+  </details>
+</CodePreview>
+
+## Horizontal Stacking
+
+<CodePreview
+  code={`
+<fieldset>
+  <legend>Language preferences:</legend>
+  <input type="checkbox" id="hindi" name="hindi" checked />
+  <label htmlFor="hindi">Hindi</label>
+  <input type="checkbox" id="swahili" name="swahili" />
+  <label htmlFor="swahili">Swahili</label>
+  <input type="checkbox" id="navi" name="navi" disabled />
+  <label htmlFor="navi" aria-disabled="true">Na'vi</label>
+</fieldset>
+`}
+  lang="html"
+>
+  <fieldset>
+    <legend>Language preferences:</legend>
+    <input type="checkbox" id="hindi" name="hindi" checked />
+    <label htmlFor="hindi">Hindi</label>
+    <input type="checkbox" id="swahili" name="swahili" />
+    <label htmlFor="swahili">Swahili</label>
+    <input type="checkbox" id="navi" name="navi" disabled />
+    <label htmlFor="navi" aria-disabled="true">Na'vi</label>
+  </fieldset>
+</CodePreview>
+
+## Validation states
+
+
+<CodePreview
+  code={`
+<label>
+  <input type="checkbox" name="valid" aria-invalid="false" />
+  Valid
+</label>
+
+<label>
+  <input type="checkbox" name="invalid" aria-invalid="true" />
+  Invalid
+</label>
+`}
+  lang="html"
+>
+  <div>
+    <label>
+      <input type="checkbox" name="valid" aria-invalid="false" />
+      Valid
+    </label>
+
+    <label>
+      <input type="checkbox" name="invalid" aria-invalid="true" />
+      Invalid
+    </label>
+  </div>
+</CodePreview>
+
