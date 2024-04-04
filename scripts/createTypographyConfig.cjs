@@ -1,13 +1,10 @@
 const TailwindConfig = require('tailwindcss/defaultConfig')
 const TailwindColors = require('tailwindcss/colors')
 const TypographyConfig = require('@tailwindcss/typography/src/styles');
-const { merge, pickBy, chain, mapValues, findKey, pick, omit } = require('lodash');
+const { merge, pickBy, chain, mapValues, findKey, } = require('lodash');
 
-const breakpoints = require('./typographyBreakpoints.cjs');
 
 async function main() {
-  // TypographyConfig.gray.css contains all the colors
-  // use all these keys start with "--tw-prose" for colors, but ignore "--tw-prose-invert" prefix
   const typographyConfig = merge({}, ...TypographyConfig.DEFAULT.css);
   const convertedConfig = convertBreakpoint('DEFAULT', typographyConfig);
 
@@ -17,24 +14,13 @@ async function main() {
   // console.log(TypographyConfig.lg);
   // console.log(TypographyConfig.xl);
   // console.log(TypographyConfig.2xl);
-
-  // console.log(convertToDefaultConfigRules('sm', breakpoints.sm));
-
-
-  // for (const breakpoint of breakpoints) {
-  //   if (breakpoint.key === 'base') {
-  //     continue;
-  //   }
-
-  //   console.log(convertToDefaultConfigRules(breakpoint))
-  // }
 };
 
 function convertBreakpoint(breakPointKey, breakpointConfig) {
   const bodyApply = [];
   const bodyConfig = {};
   const config = {};
-  const colorShades = determineColorShades(breakpointConfig);
+  const themeColors = findDefaultThemeColors();
 
   Object.entries(breakpointConfig).forEach(([key, value]) => {
     // ignore the color config
@@ -47,7 +33,7 @@ function convertBreakpoint(breakPointKey, breakpointConfig) {
     }
 
     if (key === '> :first-child' || key === '> :last-child') {
-      bodyConfig[key] = findTailwindConfigValuesForObject(value, colorShades, breakPointKey);
+      bodyConfig[key] = findTailwindConfigValuesForObject(value, themeColors, breakPointKey);
       return;
     }
 
@@ -57,7 +43,7 @@ function convertBreakpoint(breakPointKey, breakpointConfig) {
         return;
       }
 
-      bodyApply.push(findTailwindConfigValue(key, value, colorShades))
+      bodyApply.push(findTailwindConfigValue(key, value, themeColors.light))
     } else if (typeof value === 'object') {
       let configKey = key;
 
@@ -65,7 +51,7 @@ function convertBreakpoint(breakPointKey, breakpointConfig) {
         configKey = 'p a';
       }
 
-      config[configKey] = findTailwindConfigValuesForObject(value, colorShades, breakPointKey);
+      config[configKey] = findTailwindConfigValuesForObject(value, themeColors, breakPointKey);
     } else {
       throw new Error(`value type not supported key: ${key} typeof value: ${typeof value}`)
     }
@@ -81,11 +67,16 @@ function convertBreakpoint(breakPointKey, breakpointConfig) {
   }
 }
 
-function determineColorShades(breakpointConfig) {
-  const lightColorConfig = pickBy(breakpointConfig, (value, key) => key.startsWith('--tw-prose') && !key.startsWith('--tw-prose-invert'))
-  const darkColorConfig = pickBy(breakpointConfig, (value, key) => key.startsWith('--tw-prose-invert'));
+function findDefaultThemeColors() {
+  const colorConfig = TypographyConfig.gray.css;
 
   function findGrayColorShade(hex) {
+    // instead of choosing white (which is out of the color pallete),
+    // choose the lightest color on the color pallete
+    if (hex === TailwindColors.white) {
+      return '50';
+    }
+
     /* color object looks like this
     {
       50: '#...',
@@ -97,22 +88,59 @@ function determineColorShades(breakpointConfig) {
     return findKey(TailwindColors.gray, (color) => color === hex);
   }
 
+  function findOppositeOfLightTheme(varName) {
+    if (varName === '--tw-prose-kbd-shadows') {
+      return undefined;
+    }
+
+    const lightShade = light[varName];
+    const lightShadeKeys = chain(TailwindColors.gray)
+      .keys()
+      .sort()
+      .value();
+
+    const lightShadeIndex = lightShadeKeys
+      .slice()
+      .reverse() // reverse it so we can find opposite
+      .indexOf(lightShade);
+
+    if (lightShadeIndex === -1) {
+      throw new Error(`did not find light shade index for color "${varName}"`);
+    }
+
+    return lightShadeKeys[lightShadeIndex];
+  }
+
+  const light = chain(colorConfig)
+    .pickBy((value, key) => key.startsWith('--tw-prose') && !key.startsWith('--tw-prose-invert'))
+    .mapValues((hex) => findGrayColorShade(hex))
+    .value();
+
+  const dark = chain(colorConfig)
+    .pickBy((value, key) => key.startsWith('--tw-prose-invert'))
+    .mapKeys((value, key) => key.replace('invert-', ''))
+    .mapValues((hex, key) =>
+      findGrayColorShade(hex)
+      || findOppositeOfLightTheme(key)
+    )
+    .value();
+
   return {
-    light: mapValues(lightColorConfig, (hex) => findGrayColorShade(hex)),
-    dark: mapValues(darkColorConfig, hex => findGrayColorShade(hex)),
+    light,
+    dark
   }
 }
 
-function createApplyConfig(values, breakpoint) {
+function createApplyConfig(values, prefix) {
   if (!values.length) {
     return {};
   }
 
   function addPrefix(val) {
-    if (breakpoint === 'DEFAULT') {
+    if (prefix === 'DEFAULT') {
       return val;
     }
-    return `${breakpoint}:${val}`;
+    return `${prefix}:${val}`;
   }
 
   return {
@@ -120,10 +148,11 @@ function createApplyConfig(values, breakpoint) {
   }
 }
 
-function findTailwindConfigValuesForObject(object, colorShades, breakPointKey) {
+function findTailwindConfigValuesForObject(object, themeColors, breakPointKey) {
   // todo: margin, padding optimizations, for 'all', x, y
   const twConfigValues = [];
-  const passThroughConfigValues = {}
+  const passThroughConfigValues = {};
+  const darkModeValues = [];
 
   Object.entries(object)
     .forEach(([cssKey, cssValue]) => {
@@ -142,9 +171,13 @@ function findTailwindConfigValuesForObject(object, colorShades, breakPointKey) {
 
         passThroughConfigValues[cssKey] = cssValue;
       } else {
-        const found = findTailwindConfigValue(cssKey, cssValue, colorShades);
+        const found = findTailwindConfigValue(cssKey, cssValue, themeColors.light);
         if (!found) {
           throw new Error(`"${cssKey}" not found found in tw config with value "${cssValue}"`);
+        }
+
+        if (typeof cssValue === 'string' && cssValue.startsWith('var(--tw-prose')) {
+          darkModeValues.push(findTailwindConfigValue(cssKey, cssValue, themeColors.dark));
         }
 
         twConfigValues.push(found);
@@ -153,6 +186,7 @@ function findTailwindConfigValuesForObject(object, colorShades, breakPointKey) {
 
   return {
     ...createApplyConfig(twConfigValues, breakPointKey),
+    ...createApplyConfig(darkModeValues, 'dark'),
     ...passThroughConfigValues,
   };
 }
@@ -325,12 +359,12 @@ function findShadeAddPrefix(rawColor, colorShades, selector, colorName) {
 
   const varName = rawColor.replace('var(', '').replace(')', '');
 
-  if (!colorShades.light[varName]) {
-    throw new Error(`color shad with name "${varName}" not found`)
+  if (!colorShades[varName]) {
+    throw new Error(`color shade with name "${varName}" not found`)
   }
 
 
-  return `${selector}-${colorName}-${colorShades.light[varName]}`;
+  return `${selector}-${colorName}-${colorShades[varName]}`;
 }
 
 
@@ -424,9 +458,6 @@ function findSpacingAddPrefix(rawSpacingValue, prefix) {
 
   return `${prefix}-${spacing}`;
 }
-
-// TODO there is an issue with kbd. find it!!
-// chain(TailwindConfig.theme.borderRadius)
 
 const borderRadiusConfigs = chain(TailwindConfig.theme.borderRadius)
   .entries()
