@@ -1,7 +1,7 @@
 const TailwindConfig = require('tailwindcss/defaultConfig')
 const TailwindColors = require('tailwindcss/colors')
 const TypographyConfig = require('@tailwindcss/typography/src/styles');
-const { merge, pickBy, chain, mapValues, findKey, } = require('lodash');
+const { merge, pickBy, chain, omitBy, findKey, } = require('lodash');
 
 
 async function main() {
@@ -17,54 +17,18 @@ async function main() {
 };
 
 function convertBreakpoint(breakPointKey, breakpointConfig) {
-  const bodyApply = [];
-  const bodyConfig = {};
-  const config = {};
   const themeColors = findDefaultThemeColors();
 
-  Object.entries(breakpointConfig).forEach(([key, value]) => {
-    // ignore the color config
-    if (key.startsWith('--tw-prose')) {
-      return;
-    }
-
-    if (key === 'code::after' || key === 'code::before') {
-      return;
-    }
-
-    if (key === '> :first-child' || key === '> :last-child') {
-      bodyConfig[key] = findTailwindConfigValuesForObject(value, themeColors, breakPointKey);
-      return;
-    }
-
-    if (typeof value === 'string') {
-      // ignore since we don't wanna set maxWidth
-      if (key === 'maxWidth') {
-        return;
+  const newEntries = Object.entries(enhanceConfig(breakpointConfig))
+    .map(([key, value]) => {
+      if (typeof value !== 'object') {
+        throw new Error(`value type not supported key: ${key} typeof value: ${typeof value}`)
       }
 
-      bodyApply.push(findTailwindConfigValue(key, value, themeColors.light))
-    } else if (typeof value === 'object') {
-      let configKey = key;
+      return [key, findTailwindConfigValuesForObject(value, themeColors, breakPointKey)]
+    });
 
-      if (key === 'a') {
-        configKey = 'p a';
-      }
-
-      config[configKey] = findTailwindConfigValuesForObject(value, themeColors, breakPointKey);
-    } else {
-      throw new Error(`value type not supported key: ${key} typeof value: ${typeof value}`)
-    }
-  });
-
-  return {
-    body: {
-      ...createApplyConfig(bodyApply, breakPointKey),
-      ...bodyConfig,
-    },
-    ...config,
-    // colorShades,
-  }
+  return Object.fromEntries(newEntries);
 }
 
 function findDefaultThemeColors() {
@@ -131,6 +95,55 @@ function findDefaultThemeColors() {
   }
 }
 
+
+function enhanceConfig(breakpointConfig) {
+  const body = {};
+  const config = {};
+
+  Object.entries(breakpointConfig)
+    .forEach(([key, value]) => {
+      // ignore the color config
+      if (key.startsWith('--tw-prose')) {
+        return;
+      }
+
+      // ignore, don't like this styling
+      if (key === 'code::after' || key === 'code::before') {
+        return;
+      }
+
+
+      if (key === '> :first-child' || key === '> :last-child') {
+        body[key] = value;
+        return;
+      }
+
+      if (typeof value === 'string') {
+        // ignore since we don't wanna set maxWidth on the body
+        if (key === 'maxWidth') {
+          return;
+        }
+
+        body[key] = value;
+      } else if (typeof value === 'object') {
+        let configKey = key;
+
+        if (key === 'a') {
+          configKey = 'p a';
+        }
+
+        config[configKey] = value;
+      } else {
+        throw new Error(`value type not supported key: ${key} typeof value: ${typeof value}`)
+      }
+    });
+
+  return {
+    body,
+    ...config,
+  };
+}
+
 function createApplyConfig(values, prefix) {
   if (!values.length) {
     return {};
@@ -159,13 +172,15 @@ function findTailwindConfigValuesForObject(object, themeColors, breakPointKey) {
       if (cssKey === 'quotes'
         || cssKey === 'content'
         || cssKey === 'boxShadow'
+        || cssKey === '> :first-child'
+        || cssKey === '> :last-child'
         || (cssKey === 'fontWeight' && cssValue === 'inherit')
         || (cssKey === 'fontSize' && cssValue === 'inherit')
         || (cssKey === 'lineHeight' && cssValue === 'inherit'
           || (cssKey === 'fontFamily' && cssValue === 'inherit'))
       ) {
         // ignore items with vars
-        if (cssValue.includes('--tw-prose')) {
+        if (typeof cssValue === 'string' && cssValue.includes('--tw-prose')) {
           return;
         }
 
@@ -268,7 +283,7 @@ function findTailwindConfigValue(key, value, colorShades) {
     case 'verticalAlign':
       return `align-${value}`;
     default:
-      throw new Error(`"${key}" not implemented. value is "${value}"`);
+      throw new Error(`findTailwindConfigValue "${key}" not implemented. value is "${value}"`);
   }
 }
 
