@@ -1,4 +1,4 @@
-module.exports = theme => ({
+module.exports = {
   body: {
     '@apply pb-10 w-screen min-w-full min-h-screen overflow-x-hidden': {},
     //  bg-surface-50 text-surface-950
@@ -37,4 +37,4 @@ module.exports = theme => ({
   footer: {
     // TODO: fill me in
   }
-})
+}

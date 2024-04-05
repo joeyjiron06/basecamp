@@ -1,3 +1,5 @@
+import colors from 'tailwindcss/colors';
+
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,6 +9,11 @@ export default {
       maxWidth: {
         'page': '72rem',
       },
+      colors: {
+        surface: colors.neutral,
+        foreground: colors.neutral,
+        accent: colors.amber,
+      }
     }
   },
 

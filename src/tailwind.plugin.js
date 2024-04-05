@@ -4,11 +4,9 @@ const colors = require('tailwindcss/colors')
 
 module.exports = plugin(({ addBase, theme }) => {
   addBase([
-    require('./styles/layout')(theme),
-    require('./styles/typography')(theme),
+    require('./styles/layout'),
+    require('./styles/typography'),
   ])
-  // require('./styles/header')(pluginApi);
-  // require('./styles/typography')(pluginApi);
 },
 
   {

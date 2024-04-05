@@ -1,19 +1,20 @@
 const TailwindConfig = require('tailwindcss/defaultConfig')
 const TailwindColors = require('tailwindcss/colors')
 const TypographyConfig = require('@tailwindcss/typography/src/styles');
-const { merge, pickBy, chain, omitBy, findKey, } = require('lodash');
+const { merge, chain, findKey, } = require('lodash');
 
 
 async function main() {
-  const typographyConfig = merge({}, ...TypographyConfig.DEFAULT.css);
-  const convertedConfig = convertBreakpoint('DEFAULT', typographyConfig);
+  const modifiers = ['DEFAULT', 'sm', 'lg', 'xl', '2xl'];
 
-  console.log(JSON.stringify(convertedConfig, null, 2));
-  // console.log(TypographyConfig.sm);
-  // console.log(TypographyConfig.base);
-  // console.log(TypographyConfig.lg);
-  // console.log(TypographyConfig.xl);
-  // console.log(TypographyConfig.2xl);
+  const configList = modifiers.map(modifier => {
+    const typographyConfig = merge({}, ...TypographyConfig[modifier].css);
+    return convertBreakpoint(modifier, typographyConfig);
+  });
+
+  const config = merge({}, ...configList);
+
+  console.log(JSON.stringify(config, null, 2));
 };
 
 function convertBreakpoint(breakPointKey, breakpointConfig) {
@@ -157,7 +158,7 @@ function createApplyConfig(values, prefix) {
   }
 
   return {
-    [`@apply ${values.map(val => addPrefix(val)).join(' ')}`]: {}
+    [`@apply ${values.slice().sort().map(val => addPrefix(val)).join(' ')}`]: {}
   }
 }
 
