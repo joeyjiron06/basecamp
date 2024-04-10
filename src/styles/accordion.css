@@ -1,5 +1,5 @@
 :not(li) > details:not(.dropdown) {
-  @apply w-full border-b border-b-gray-300;
+  @apply w-full border-b border-b-surface-200 dark:border-b-surface-800;
 
   /* summary title */
   summary {
