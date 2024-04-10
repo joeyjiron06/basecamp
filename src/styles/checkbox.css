@@ -1,0 +1,70 @@
+input[type="checkbox"] {
+  @apply w-4 h-4 mr-3 align-middle m-0 bg-transparent border border-foreground-950 appearance-none select-none rounded cursor-pointer;
+
+  @apply dark:border-foreground-50;
+
+/* 
+  appearance: 'none',
+          padding: '0',
+          'print-color-adjust': 'exact',
+          display: 'inline-block',
+          'vertical-align': 'middle',
+          'background-origin': 'border-box',
+          'user-select': 'none',
+          'flex-shrink': '0',
+          height: spacing[4],
+          width: spacing[4],
+          color: resolveColor(theme('colors.blue.600', colors.blue[600]), '--tw-text-opacity'),
+          'background-color': '#fff',
+          'border-color': resolveColor(
+            theme('colors.gray.500', colors.gray[500]),
+            '--tw-border-opacity'
+          ),
+          'border-width': borderWidth['DEFAULT'],
+          '--tw-shadow': '0 0 #0000',
+*/
+
+}
+
+label:has(input[type="checkbox"]) {
+  @apply cursor-pointer justify-start;
+
+  /* label text */
+  & *:not(input[type="checkbox"]) {
+    /* @apply label-text; */
+  }
+
+  /* label text when input is disabled  */
+  & input[type="checkbox"]:disabled + *{
+    @apply opacity-25;
+  }
+
+  /* disabled cursor on whole container */
+  &:has(input[type="checkbox"]:disabled) {
+    @apply cursor-not-allowed;
+  }
+}
+
+/* 
+horizontal stacking 
+margin on right except the last one 
+*/
+
+input[type=checkbox]~label:not(:last-of-type) {
+  @apply mr-6;
+}
+
+/* align the label to the middle  */
+input[type=checkbox]~label {
+  @apply align-middle;
+}
+
+/* validation states */
+
+/* input[type=checkbox][aria-invalid=true] {
+  @apply checkbox-error;
+}
+
+input[type=checkbox][aria-invalid=false] {
+  @apply checkbox-success;
+} */

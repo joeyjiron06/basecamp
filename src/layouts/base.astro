@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { GithubIcon, MoonIcon, MenuIcon } from 'astro-feather';
+import { GithubIcon, MoonIcon, MenuIcon, SunIcon } from 'astro-feather';
 import TwitterLogo from '~/components/twitterLogo.astro';
 import Logo from '~/components/logo.astro';
 import clsx from 'clsx';
@@ -58,9 +58,10 @@ const ProjectName = 'Snips';
             </a>
           </li>
           <li>
-            <a href={import.meta.env.BASE_URL}>
-              <MoonIcon customClasses='w-4 h-4' />
-            </a>
+            <button id='theme-toggle' class='btn-ghost px-2'>
+              <MoonIcon customClasses='w-4 h-4 block dark:hidden' />
+              <SunIcon customClasses='w-4 h-4 hidden dark:block' />
+            </button>
           </li>
         </ul>
       </nav>
@@ -73,3 +74,62 @@ const ProjectName = 'Snips';
     <footer>this is the footer</footer>
   </body>
 </html>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+
+  function toggleTheme() {
+    const currentTheme = getCurrentTheme();
+
+    const preferredTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    setTheme(preferredTheme);
+  }
+
+  function getCurrentTheme() {
+    return getSavedTheme() || getSystemTheme();
+  }
+
+  function getSavedTheme() {
+    return localStorage?.getItem('theme');
+  }
+
+  function savedTheme(theme: string) {
+    localStorage?.setItem('theme', theme);
+  }
+
+  function getSystemTheme() {
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      return 'dark';
+    }
+
+    return 'light';
+  }
+
+  function setTheme(theme: string) {
+    savedTheme(theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+
+  function loadTheme() {
+    const savedTheme = getSavedTheme();
+
+    if (!savedTheme) {
+      return;
+    }
+
+    setTheme(savedTheme);
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      toggleTheme();
+    });
+  }
+
+  loadTheme();
+</script>

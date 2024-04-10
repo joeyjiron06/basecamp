@@ -64,6 +64,16 @@ button,
     }
   }
 
+  &.btn-ghost {
+    @apply bg-opacity-0 text-foreground-950;
+    @apply dark:text-foreground-50;
+
+    &:hover {
+      @apply bg-surface-200;
+      @apply dark:bg-surface-800;
+    }
+  }
+
   /* ICONS */
 
   & svg {

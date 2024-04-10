@@ -6,6 +6,9 @@ module.exports = {
   header: {
     '@apply w-full sticky top-0 left-0 z-30 flex justify-between items-center border-b px-4 py-2': {},
 
+    '@apply bg-surface-50': {},
+    '@apply dark:bg-surface-950 dark:border-b-surface-800': {},
+
     nav: {
       ul: {
         '@apply list-none flex gap-2 py-0 my-0 text-sm font-normal': {},
@@ -24,6 +27,7 @@ module.exports = {
               '@apply p-2': {},
               '&:hover': {
                 '@apply bg-surface-200 rounded': {},
+                '@apply dark:bg-surface-800': {},
               }
             },
             svg: {
