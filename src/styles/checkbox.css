@@ -1,37 +1,59 @@
 input[type="checkbox"] {
-  @apply w-4 h-4 mr-3 align-middle m-0 bg-transparent border border-foreground-950 appearance-none select-none rounded cursor-pointer;
+  /* spacing */
+  @apply w-4 h-4 align-middle ml-0 mt-0 mb-0 mr-2 bg-transparent appearance-none select-none rounded cursor-pointer inline-block bg-no-repeat transition-[background] duration-150;
 
-  @apply dark:border-foreground-50;
+  /* color */
+  @apply border border-surface-950;
 
-/* 
-  appearance: 'none',
-          padding: '0',
-          'print-color-adjust': 'exact',
-          display: 'inline-block',
-          'vertical-align': 'middle',
-          'background-origin': 'border-box',
-          'user-select': 'none',
-          'flex-shrink': '0',
-          height: spacing[4],
-          width: spacing[4],
-          color: resolveColor(theme('colors.blue.600', colors.blue[600]), '--tw-text-opacity'),
-          'background-color': '#fff',
-          'border-color': resolveColor(
-            theme('colors.gray.500', colors.gray[500]),
-            '--tw-border-opacity'
-          ),
-          'border-width': borderWidth['DEFAULT'],
-          '--tw-shadow': '0 0 #0000',
-*/
+  /* dark mode */
+  @apply dark:border-surface-50;
 
+  --svg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' class='w-4 h-4'><path fill-rule='evenodd' d='M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z' clip-rule='evenodd' /></svg>");
+
+  &:checked {
+    @apply bg-surface-950 dark:bg-surface-50;
+
+   @apply relative;
+    
+    &::before {
+      content: '';
+      @apply absolute inset-0 bg-foreground-50 dark:bg-foreground-950;
+
+      -webkit-mask: var(--svg);
+      mask: var(--svg);
+
+      animation: checkmark 0.2s ease-out;
+    }
+  }
+
+  &:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-surface-950;
+    @apply dark:outline-surface-50;
+  }
+
+  &:disabled {
+    @apply pointer-events-none opacity-50;
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    mask-position: 0 5px;
+  }
+
+  50% {
+    mask-position: 0 -2px;
+  }
+
+  to {
+    mask-position: 0;
+  }
 }
 
 label:has(input[type="checkbox"]) {
-  @apply cursor-pointer justify-start;
+  @apply flex items-center cursor-pointer justify-start;
 
-  /* label text */
   & *:not(input[type="checkbox"]) {
-    /* @apply label-text; */
   }
 
   /* label text when input is disabled  */
@@ -60,11 +82,26 @@ input[type=checkbox]~label {
 }
 
 /* validation states */
+input[type=checkbox][aria-invalid=true] {
+  @apply border-red-500;
 
-/* input[type=checkbox][aria-invalid=true] {
-  @apply checkbox-error;
+  &:checked {
+    @apply bg-red-500;
+  }
+}
+
+label:has(input[type="checkbox"][aria-invalid=true]) {
+  @apply text-red-500;
 }
 
 input[type=checkbox][aria-invalid=false] {
-  @apply checkbox-success;
-} */
+  @apply border-green-500;
+
+  &:checked {
+    @apply bg-green-500;
+  }
+}
+
+label:has(input[type="checkbox"][aria-invalid=false]) {
+  @apply text-green-500;
+}

@@ -5,8 +5,8 @@ const colors = require('tailwindcss/colors')
 module.exports = plugin(({ addBase, theme }) => {
   addBase([
     // require('../dist/styles/{fileName}')
-    require('./styles/layout'),
-    require('./styles/typography'),
+    // require('./styles/layout'),
+    // require('./styles/typography'),
     // require('./styles/accordion')
   ])
 },

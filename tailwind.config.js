@@ -6,6 +6,12 @@ export default {
 
   darkMode: ['selector', '[data-theme="dark"]'],
 
+  corePlugins: {
+    // TODO: do this later
+    // preflight: false
+  },
+
+
   theme: {
     extend: {
       maxWidth: {
@@ -20,6 +26,6 @@ export default {
   },
 
   plugins: [
-    require('./src/tailwind.plugin.js')
+    require('./src/tailwind.plugin.js'),
   ],
 }

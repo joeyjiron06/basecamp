@@ -1,0 +1,67 @@
+---
+import BaseLayout from '~/layouts/base.astro';
+import TailwindConfig from 'tailwindcss/resolveConfig';
+---
+
+<BaseLayout title='Dev'>
+  <section>
+    <hgroup>
+      <h1>Dev Route</h1>
+      <p>This route displays the design system that is currently configured.</p>
+    </hgroup>
+  </section>
+
+  <section>
+    <h2>Colors</h2>
+
+    <div class='flex gap-4'>
+      <div>
+        <div class={`bg-surface-50 dark:bg-surface-950 rounded w-16 h-10`}>
+        </div>
+        <div class='text-sm'>surface</div>
+      </div>
+
+      <div>
+        <div
+          class={` bg-foreground-950 dark:bg-foreground-50 rounded w-16 h-10`}>
+        </div>
+        <div class='text-sm'>foreground</div>
+      </div>
+
+      <div>
+        <div class={` bg-accent-500 rounded w-16 h-10`}></div>
+        <div class='text-sm'>accent</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Shadows</h2>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+  </section>
+
+  <section>
+    <h2>Table</h2>
+  </section>
+
+  <section>
+    <h2>Forms & Inputs</h2>
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    @apply container mx-auto px-6 my-10;
+
+    h2 {
+      @apply mb-6;
+    }
+  }
+</style>
