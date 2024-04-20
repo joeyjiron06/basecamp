@@ -1,46 +1,149 @@
 ---
-layout: ../../../layouts/docs.astro
-title: Accordion
-subtitle: Toggle sections of content in pure HTML, without JavaScript, using minimal and semantic markup.
+layout: ~/layouts/docs.astro
+title: Input
+subtitle: All input types are consistently styled and come with validation states.
 ---
 
-import Code from '~/components/code.astro';
-import AccordianCSS from '~/styles/accordion.css?raw';
 import CodePreview from '~/components/codePreview.astro';
 
-Ok, so I will confess that this component is not from DaisyUI. I tried applying the `collapse` component styling but due to the implementation details with CSS, it was not possible. I have added some default styling so that the details element are styled similar to DaisyUI.
-
-## CSS
-
-<Code lang='postcss' code={AccordianCSS} />
-
-## Usage
-
 <CodePreview 
-  class="not-prose"
   code={`
-<details>
-  <summary>Open Me</summary>
-  <div>I am the content of the details</div>
-</details>
-
-<details>
-  <summary>Open Me Too</summary>
-  <div>I am the content of the details</div>
-  <div>I am more content</div>
-</details>
+<input type="text" name="text" placeholder="Text" aria-label="Text" />
+<input type="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email" />
+<input type="number" name="number" placeholder="Number" aria-label="Number" />
+<input type="password" name="password" placeholder="Password" aria-label="Password" />
+<input type="tel" name="tel" placeholder="Tel" aria-label="Tel" autocomplete="tel" />
+<input type="url" name="url" placeholder="Url" aria-label="Url" />
   `}
   lang='html'
 >
-  <details>
-    <summary>Open Me</summary>
-    <div> I am the content of the details</div>
-  </details>
-
-  <details>
-    <summary>Open Me Too</summary>
-    <div> I am the content of the details</div>
-    <div> I am more content</div>
-  </details>
+  <div className='space-y-4'>
+    <input type="text" name="text" placeholder="Text" aria-label="Text" />
+    <input type="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email" />
+    <input type="number" name="number" placeholder="Number" aria-label="Number" />
+    <input type="password" name="password" placeholder="Password" aria-label="Password" />
+    <input type="tel" name="tel" placeholder="Tel" aria-label="Tel" autocomplete="tel" />
+    <input type="url" name="url" placeholder="Url" aria-label="Url" />
+  </div>
 </CodePreview>
+
+
+## Text input with text label inside
+
+
+<CodePreview 
+  code={`
+<label>
+  Email
+  <input type="text" class="grow" placeholder="daisy@site.com" />
+</label>
+
+<label>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+  </svg>
+  <input type="text" class="grow" placeholder="janedoe@gmail.com" />
+</label>
+
+<label>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+  </svg>
+  <input type="text" class="grow" placeholder="username" />
+</label>
+  `}
+  lang='html'
+>
+  <div class='space-y-4'>
+    <label>Email<input type="text" class="grow" placeholder="daisy@site.com" /></label>
+
+    <label><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+    </svg><input type="text" class="grow" placeholder="janedoe@gmail.com" /></label>
+
+  <label><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg><input type="text" class="grow" placeholder="username" /></label>
+  </div>
+</CodePreview>
+
+
+## Datetime Input
+
+Datetime inputs come with an icon.
+
+<CodePreview 
+  code={`
+<input type="date" name="date" aria-label="Date" />
+<input type="datetime-local" name="datetime-local" aria-label="Datetime local" />
+<input type="month" name="month" aria-label="Month" />
+<input type="time" name="time" aria-label="Time" />
+  `}
+  lang='html'
+>
+  <div class='space-y-4'>
+    <input type="date" name="date" aria-label="Date" />
+    <input type="datetime-local" name="datetime-local" aria-label="Datetime local" />
+    <input type="month" name="month" aria-label="Month" />
+    <input type="time" name="time" aria-label="Time" />
+  </div>
+</CodePreview>
+
+## Disabled
+
+<CodePreview 
+  code={`
+<input type="text" name="username" placeholder="You can't touch this" disabled/>
+<label>
+  Email
+  <input type="text" class="grow" placeholder="daisy@site.com" />
+</label>
+  `}
+  lang='html'
+>
+  <div class='space-y-4'>
+    <input type="text" name="username" placeholder="You can't touch this" disabled/>
+    <label>Email<input type="text" class="grow" placeholder="daisy@site.com"  disabled/></label>
+  </div>
+</CodePreview>
+
+
+## Validaion states
+
+Validation states are provided with aria-invalid.
+
+<CodePreview 
+  code={`
+<input
+  type="text"
+  name="valid"
+  value="Valid"
+  aria-invalid="false"
+/>
+
+<input
+  type="text"
+  name="invalid"
+  value="Invalid"
+  aria-invalid="true"
+/>
+  `}
+  lang='html'
+>
+  <div class='space-y-4'>
+    <input
+      type="text"
+      name="valid"
+      value="Valid"
+      aria-invalid="false"
+    />
+
+    <input
+      type="text"
+      name="invalid"
+      value="Invalid"
+      aria-invalid="true"
+    />
+  </div>
+</CodePreview>
+
 

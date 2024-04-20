@@ -13,3 +13,9 @@ const { title, subtitle } = Astro.props.frontmatter || Astro.props;
     <slot />
   </article>
 </BaseLayout>
+
+<style is:global>
+  p {
+    @apply mb-6;
+  }
+</style>

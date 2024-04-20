@@ -31,12 +31,16 @@ h4 {
   @apply 2xl:leading-normal 2xl:mb-2.5 2xl:mt-6;
 }
 
+hgroup {
+  @apply mb-4;
+}
+
 hgroup *:first-child {
   @apply mt-0 mb-2;
 }
 
 hgroup *:last-child {
-  @apply mt-0 opacity-70;
+  @apply mt-0 text-foreground-500;
 }
 
 /* other */
@@ -74,10 +78,14 @@ hr {
   }
 }
 
+p {
+  @apply text-foreground-600;
+  @apply dark:text-foreground-400;
+}
+
 p a {
   @apply font-medium underline;
 }
-
 
 ol {
   @apply list-decimal mb-5 mt-5 pl-6;
@@ -170,6 +178,3 @@ ul ul, ul ol, ol ul, ol ol {
   @apply xl:mb-3 xl:mt-3;
   @apply 2xl:mb-2.5 2xl:mt-2.5;
 }
-
-
-
