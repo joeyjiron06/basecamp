@@ -1,20 +1,10 @@
 ---
-layout: ../../../layouts/docs.astro
-title: Accordion
-subtitle: Toggle sections of content in pure HTML, without JavaScript, using minimal and semantic markup.
+layout: ~/layouts/docs.astro
+title: Modal
+subtitle: The classic modal component with graceful spacings across devices and viewports, using the semantic HTML tag <dialog>.
 ---
 
-import Code from '~/components/code.astro';
-import AccordianCSS from '~/styles/accordion.css?raw';
 import CodePreview from '~/components/codePreview.astro';
-
-Ok, so I will confess that this component is not from DaisyUI. I tried applying the `collapse` component styling but due to the implementation details with CSS, it was not possible. I have added some default styling so that the details element are styled similar to DaisyUI.
-
-## CSS
-
-<Code lang='postcss' code={AccordianCSS} />
-
-## Usage
 
 <CodePreview 
   class="not-prose"
@@ -32,15 +22,20 @@ Ok, so I will confess that this component is not from DaisyUI. I tried applying 
   `}
   lang='html'
 >
-  <details>
-    <summary>Open Me</summary>
-    <div> I am the content of the details</div>
-  </details>
+  <button  onclick="my_modal_1.showModal()">open modal</button>
+  <dialog id="my_modal_1">
+    <article>
+      <h3>Are you absolutely sure?</h3>
+      <p>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
 
-  <details>
-    <summary>Open Me Too</summary>
-    <div> I am the content of the details</div>
-    <div> I am more content</div>
-  </details>
+      <footer>
+        <form method="dialog">
+          {/* <!-- if there is a button in form, it will close the modal --> */}
+          <button class="btn-outline">Cancel</button>
+          <button>Continue</button>
+        </form>
+      </footer>
+    </article>
+  </dialog>
 </CodePreview>
 
