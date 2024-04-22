@@ -1,0 +1,41 @@
+dialog {
+  @apply bg-surface-50 text-foreground-950 p-6 rounded;
+  @apply dark:bg-surface-950 dark:text-foreground-50 dark:border dark:border-surface-800;
+
+
+  &::backdrop {
+    @apply bg-surface-950/70;
+  }
+
+  footer {
+    @apply flex justify-end;
+  }
+
+  &[open] {
+    animation: dialog-show 200ms ease normal;
+
+    &::backdrop {
+      animation: fade-in 200ms ease normal;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+@keyframes dialog-show {
+  from {
+    opacity: 0;
+    transform: scale3d(0.90, 0.90, 0.90);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

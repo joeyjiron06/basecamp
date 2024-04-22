@@ -9,33 +9,34 @@ import CodePreview from '~/components/codePreview.astro';
 <CodePreview 
   class="not-prose"
   code={`
-<details>
-  <summary>Open Me</summary>
-  <div>I am the content of the details</div>
-</details>
+<button  onclick="my_modal_1.showModal()">open modal</button>
 
-<details>
-  <summary>Open Me Too</summary>
-  <div>I am the content of the details</div>
-  <div>I am more content</div>
-</details>
+<dialog id="my_modal_1">
+  <h3>Are you absolutely sure?</h3>
+  <p>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+
+  <footer>
+    <form method="dialog">
+      {/* <!-- if there is a button in form, it will close the modal --> */}
+      <button class="btn-outline">Cancel</button>
+      <button>Continue</button>
+    </form>
+  </footer>
+</dialog>
   `}
   lang='html'
 >
   <button  onclick="my_modal_1.showModal()">open modal</button>
   <dialog id="my_modal_1">
-    <article>
+    <form method="dialog">
       <h3>Are you absolutely sure?</h3>
       <p>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
 
       <footer>
-        <form method="dialog">
-          {/* <!-- if there is a button in form, it will close the modal --> */}
-          <button class="btn-outline">Cancel</button>
-          <button>Continue</button>
-        </form>
+        <button class="btn-outline mr-2">Cancel</button>
+        <button>Continue</button>
       </footer>
-    </article>
+    </form>
   </dialog>
 </CodePreview>
 
