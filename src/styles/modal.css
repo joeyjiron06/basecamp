@@ -1,5 +1,5 @@
 dialog {
-  @apply bg-surface-50 text-foreground-950 p-6 rounded;
+  @apply bg-surface-50 text-foreground-950 p-6 rounded shadow-lg;
   @apply dark:bg-surface-950 dark:text-foreground-50 dark:border dark:border-surface-800;
 
 

@@ -54,6 +54,7 @@ label:has(input[type="checkbox"]) {
   @apply flex items-center cursor-pointer justify-start;
 
   & *:not(input[type="checkbox"]) {
+    @apply pb-0 mb-0;
   }
 
   /* label text when input is disabled  */

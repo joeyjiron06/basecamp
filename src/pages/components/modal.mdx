@@ -6,10 +6,14 @@ subtitle: The classic modal component with graceful spacings across devices and 
 
 import CodePreview from '~/components/codePreview.astro';
 
+Using the HTML native modal dialog element and a simple 1 liner javascript, you can open a modal. to close the dialog, you can put in a form element with a method of `dialog` in it and any buttons in it will automatically close the dialog.
+
+More reading [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog).
+
 <CodePreview 
   class="not-prose"
   code={`
-<button  onclick="my_modal_1.showModal()">open modal</button>
+<button onclick="my_modal_1.showModal()">open modal</button>
 
 <dialog id="my_modal_1">
   <h3>Are you absolutely sure?</h3>
