@@ -1,46 +1,50 @@
 ---
-layout: ../../../layouts/docs.astro
-title: Accordion
-subtitle: Toggle sections of content in pure HTML, without JavaScript, using minimal and semantic markup.
+layout: ~/layouts/docs.astro
+title: Select
+subtitle: The native <select> is styled like the input for consistency.
 ---
 
-import Code from '~/components/code.astro';
-import AccordianCSS from '~/styles/accordion.css?raw';
+
 import CodePreview from '~/components/codePreview.astro';
 
-Ok, so I will confess that this component is not from DaisyUI. I tried applying the `collapse` component styling but due to the implementation details with CSS, it was not possible. I have added some default styling so that the details element are styled similar to DaisyUI.
-
-## CSS
-
-<Code lang='postcss' code={AccordianCSS} />
-
-## Usage
 
 <CodePreview 
-  class="not-prose"
   code={`
-<details>
-  <summary>Open Me</summary>
-  <div>I am the content of the details</div>
-</details>
-
-<details>
-  <summary>Open Me Too</summary>
-  <div>I am the content of the details</div>
-  <div>I am more content</div>
-</details>
+<select>
+  <option>Apples</option>
+  <option>Banannas</option>
+  <option>Cherry</option>
+  <option>Dates</option>
+</select>
   `}
   lang='html'
 >
-  <details>
-    <summary>Open Me</summary>
-    <div> I am the content of the details</div>
-  </details>
-
-  <details>
-    <summary>Open Me Too</summary>
-    <div> I am the content of the details</div>
-    <div> I am more content</div>
-  </details>
+  <select>
+    <option>Apples</option>
+    <option>Banannas</option>
+    <option>Cherry</option>
+    <option>Dates</option>
+  </select>
 </CodePreview>
 
+## Disabled
+
+
+<CodePreview 
+  code={`
+<select disabled>
+  <option>Apples</option>
+  <option>Banannas</option>
+  <option>Cherry</option>
+  <option>Dates</option>
+</select>
+  `}
+  lang='html'
+>
+  <select disabled>
+    <option>Apples</option>
+    <option>Banannas</option>
+    <option>Cherry</option>
+    <option>Dates</option>
+  </select>
+</CodePreview>

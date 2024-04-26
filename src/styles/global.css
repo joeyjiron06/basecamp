@@ -1,3 +1,6 @@
+/* visible state */
+/* TODO: apply to button and other elements  */
+@import './config.css';
 @import './layout.css';
 @import './typography.css';
 @import './accordion.css';
@@ -7,7 +10,7 @@
 @import './input.css';
 @import './modal.css';
 @import './radio.css';
-/* @import './select.css'; */
+@import './select.css';
 /* @import './switch.css'; */
 /* @import './table.css'; */
 /* @import './textarea.css'; */
