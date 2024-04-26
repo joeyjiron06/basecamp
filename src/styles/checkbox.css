@@ -1,4 +1,4 @@
-input[type="checkbox"] {
+input[type="checkbox"]:not([role="switch"]) {
   /* spacing */
   @apply w-4 h-4 align-middle ml-0 mt-0 mb-0 mr-2 bg-transparent appearance-none select-none rounded cursor-pointer inline-block bg-no-repeat transition-[background] duration-150;
 
