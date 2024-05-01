@@ -38,38 +38,49 @@ const ProjectName = 'Snips';
   </head>
   <body>
     <header>
-      <div>
-        <Logo />
+      <div
+        class='w-full flex justify-between items-center container px-6 mx-auto'>
+        <div>
+          <Logo />
+        </div>
+
+        <nav class='flex items-center gap-2'>
+          <a
+            class='hidden sm:flex btn btn-ghost'
+            href=`${import.meta.env.BASE_URL}/docs`>Docs</a
+          >
+
+          <a
+            href='https://github.com/joeyjiron06/snips'
+            class='btn btn-ghost px-2'>
+            <GithubIcon customClasses='w-4 h-4' />
+          </a>
+
+          <a href='https://twitter.com/joeyjiron06' class='btn btn-ghost px-2'>
+            <TwitterLogo customClasses='w-4 h-4' />
+          </a>
+
+          <button id='theme-toggle' class='btn-ghost px-2'>
+            <MoonIcon customClasses='w-4 h-4 block dark:hidden' />
+            <SunIcon customClasses='w-4 h-4 hidden dark:block' />
+          </button>
+        </nav>
       </div>
-
-      <nav class='flex items-center gap-2'>
-        <a
-          class='hidden sm:flex btn btn-ghost'
-          href=`${import.meta.env.BASE_URL}/docs`>Docs</a
-        >
-
-        <a
-          href='https://github.com/joeyjiron06/snips'
-          class='btn btn-ghost px-2'>
-          <GithubIcon customClasses='w-4 h-4' />
-        </a>
-
-        <a href='https://twitter.com/joeyjiron06' class='btn btn-ghost px-2'>
-          <TwitterLogo customClasses='w-4 h-4' />
-        </a>
-
-        <button id='theme-toggle' class='btn-ghost px-2'>
-          <MoonIcon customClasses='w-4 h-4 block dark:hidden' />
-          <SunIcon customClasses='w-4 h-4 hidden dark:block' />
-        </button>
-      </nav>
     </header>
 
     <main>
       <slot />
     </main>
 
-    <footer>this is the footer</footer>
+    <footer class='block border-t dark:border-t-surface-800 w-full py-4'>
+      <div class='container px-6 mx-auto'>
+        <p>
+          <small
+            >Built by Joey Jiron. The source code is available on GitHub.</small
+          >
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
 

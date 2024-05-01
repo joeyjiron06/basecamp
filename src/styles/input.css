@@ -8,13 +8,7 @@
       @apply disabled;
     }
 
-    &[aria-invalid="true"] {
-      @apply border-red-500;
-    }
-
-    &[aria-invalid="false"] {
-      @apply border-green-500;
-    }
+    @apply validation-states;
   }
 
 

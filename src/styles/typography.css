@@ -36,11 +36,11 @@
     @apply mb-4;
   }
 
-  hgroup *:first-child {
+  hgroup > *:first-child {
     @apply mt-0 mb-2;
   }
 
-  hgroup *:last-child {
+  hgroup > *:last-child {
     @apply mt-0 text-foreground-500;
   }
 
@@ -179,5 +179,4 @@
     @apply xl:mb-3 xl:mt-3;
     @apply 2xl:mb-2.5 2xl:mt-2.5;
   }
-
 }

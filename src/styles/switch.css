@@ -28,6 +28,6 @@
   }
 
   label:has(input[type="checkbox"][role="switch"]) {
-    @apply space-x-2;
+    @apply flex items-center gap-2;
   }
 }

@@ -20,7 +20,7 @@ export default {
       colors: {
         surface: colors.neutral,
         foreground: colors.neutral,
-        accent: colors.amber,
+        brand: colors.stone,
       }
     }
   },

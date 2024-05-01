@@ -1,34 +1,273 @@
 ---
-import { GithubIcon, MoonIcon } from "astro-feather";
-import BaseLayout from "~/layouts/base.astro";
+import BaseLayout from '~/layouts/base.astro';
+import { DownloadIcon } from 'astro-feather';
+import Code from '~/components/code.astro';
 
-const ProjectName = "Snips";
+const ProjectName = 'Snips';
 ---
 
 <BaseLayout title=`Welcome to ${ProjectName}!`>
-  <main
-    class="h-full w-full max-w-page px-4 md:px-4 mx-auto pt-6 flex items-center justify-center"
-  >
-    <div class="text-center space-y-6">
-      <hgroup>
-        <h1 class="sm:text-6xl">Save Time Building Websites</h1>
-        <p>
-          Discover a vast collection of reusable code snippets designed to
-          streamline your website development process.
-        </p>
-      </hgroup>
+  <section class='section -mt-14 pt-32 text-center'>
+    <hgroup>
+      <h1 class='text-4xl sm:text-5xl md:text-6xl font-normal italic'>
+        base <span class='font-black'>Camp</span>
+      </h1>
+      <p>The first "classless" Tailwind CSS framework.</p>
+    </hgroup>
 
-      <div class="flex items-center justify-center gap-4">
-        <a
-          class="btn btn-primary"
-          href=`${import.meta.env.BASE_URL}/introduction`
-        >
-          Get Started
-        </a>
-        <a class="btn btn-outline" href="https://github.com/joeyjiron06/snips">
-          <GithubIcon />Github
-        </a>
+    <button><DownloadIcon customClasses='mr-2' /> Download</button>
+  </section>
+
+  <section class='w-full py-20 space-y-4 text-sm'>
+    <div class='overflow-x-scroll flex gap-2 items-start'>
+      <span class='element-tag'>accordion</span>
+      <span class='element-tag'>body</span>
+      <span class='element-tag'>button</span>
+      <span class='element-tag'>checkbox</span>
+      <span class='element-tag'>dropdown</span>
+      <span class='element-tag'>input</span>
+      <span class='element-tag'>header</span>
+      <span class='element-tag'>footer</span>
+      <span class='element-tag'>modal</span>
+      <span class='element-tag'>radio</span>
+      <span class='element-tag'>select</span>
+      <span class='element-tag'>switch</span>
+      <span class='element-tag'>table</span>
+      <span class='element-tag'>textarea</span>
+      <span class='element-tag'>tooltip</span>
+      <span class='element-tag'>h1</span>
+      <span class='element-tag'>h2</span>
+      <span class='element-tag'>h3</span>
+      <span class='element-tag'>h4</span>
+      <span class='element-tag'>p</span>
+      <span class='element-tag'>blockquote</span>
+      <span class='element-tag'>a</span>
+      <span class='element-tag'>ol</span>
+      <span class='element-tag'>ul</span>
+    </div>
+
+    <div class='overflow-x-scroll flex gap-2 items-start'>
+      <span class='element-tag'>accordion</span>
+      <span class='element-tag'>body</span>
+      <span class='element-tag'>button</span>
+      <span class='element-tag'>checkbox</span>
+      <span class='element-tag'>dropdown</span>
+      <span class='element-tag'>input</span>
+      <span class='element-tag'>header</span>
+      <span class='element-tag'>footer</span>
+      <span class='element-tag'>modal</span>
+      <span class='element-tag'>radio</span>
+      <span class='element-tag'>select</span>
+      <span class='element-tag'>switch</span>
+      <span class='element-tag'>table</span>
+      <span class='element-tag'>textarea</span>
+      <span class='element-tag'>tooltip</span>
+      <span class='element-tag'>h1</span>
+      <span class='element-tag'>h2</span>
+      <span class='element-tag'>h3</span>
+      <span class='element-tag'>h4</span>
+      <span class='element-tag'>p</span>
+      <span class='element-tag'>blockquote</span>
+      <span class='element-tag'>a</span>
+      <span class='element-tag'>ol</span>
+      <span class='element-tag'>ul</span>
+    </div>
+  </section>
+
+  <section class='section'>
+    <div class='grid grid-cols-1 md:grid-cols-4 grid-rows-4 gap-3 w-full'>
+      <div class='md:col-span-2 md:row-span-2 bento-card'>
+        <h2>Accordion</h2>
+
+        <details>
+          <summary>What is this?</summary>
+          <p>
+            This is a "classless" css library built on top of Tailwind CSS that
+            you download and copy/paste to your project that gives you a great
+            place to start your design system.
+          </p>
+        </details>
+
+        <details>
+          <summary>When would I use this?</summary>
+          <p>
+            Use this on your personal projects to your enterprise applications.
+          </p>
+        </details>
+      </div>
+      <div class='md:col-span-2 md:row-span-1 bento-card'>
+        <h2>Button</h2>
+
+        <div class='flex flex-col gap-2'>
+          <button>Hi 👋!</button>
+        </div>
+      </div>
+      <div class='md:col-span-2 md:row-span-1 bento-card'>
+        <h2>Checkbox</h2>
+
+        <label>
+          <input type='checkbox' name='language' checked />
+          English
+        </label>
+
+        <label>
+          <input type='checkbox' name='language' />
+          German
+        </label>
+        <label>
+          <input type='checkbox' name='language' />
+          Spanish
+        </label>
+      </div>
+      <div class='md:col-span-1 md:row-span-2 bento-card'>
+        <h2>Dropdown</h2>
+        <details class='dropdown'>
+          <summary>Open Me!</summary>
+          <ul>
+            <li tabindex='1'><a>Item 1</a></li>
+            <li tabindex='1'><a>Item 2</a></li>
+          </ul>
+        </details>
+      </div>
+      <div class='md:col-span-2 md:row-span-2 bento-card'>
+        <h2>Inputs</h2>
+
+        <div class='flex flex-col gap-2'>
+          <label>
+            Email
+            <input type='text' class='grow' placeholder='daisy@site.com' />
+          </label>
+
+          <label>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke-width='1.5'
+              stroke='currentColor'
+              class='w-6 h-6'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                d='M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z'
+              ></path>
+            </svg>
+            <input type='text' class='grow' placeholder='username' />
+          </label>
+
+          <input type='date' name='date' aria-label='Date' />
+
+          <div class='self-stretch'>
+            <input
+              type='text'
+              name='invalid'
+              value='Invalid'
+              aria-invalid='true'
+              class='w-full'
+            />
+            <small>This is an error message.</small>
+          </div>
+        </div>
+      </div>
+      <div class='md:col-span-1 md:row-span-2 bento-card'>
+        <h2>Switch</h2>
+        <label>
+          <input type='checkbox' role='switch' />
+          On/Off
+        </label>
       </div>
     </div>
-  </main>
+  </section>
+
+  <section class='section py-12'>
+    <hgroup>
+      <h2>Tired of writing a <b>TON</b> of classnames?</h2>
+      <p>For every element, every page, every project, again and again…</p>
+    </hgroup>
+
+    <div>
+      <h3>Before</h3>
+      <Code
+        lang='html'
+        code=`
+<button class="h-9 min-h-9 inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-normal transition-colors px-4 py-2 cursor-pointer border-transparent border bg-surface-950 text-foreground-50 duration-150 hover:bg-opacity-90">Hi 👋!</button>
+`
+        customClasses='px-4 py-6 overflow-x-hidden text-wrap'
+      />
+
+      <h3>After</h3>
+      <Code
+        lang='html'
+        code=`
+<button>Hi 👋!</button>
+`
+        customClasses='px-4 py-6 overflow-x-hidden text-wrap'
+      />
+
+      <h3>Result</h3>
+
+      <button>Hi 👋!</button>
+    </div>
+  </section>
+
+  <!-- benefits -->
+
+  <section></section>
+
+  <!-- 
+26+ components
+
+**Effortless Integration, Maximum Impact**
+- *Seamless Tailwind CSS Integration*: Our library is built on the principles of Tailwind CSS, ensuring that you can integrate it effortlessly into your existing projects without any compatibility concerns.
+
+**Design Consistency, Uncompromised Flexibility**
+- *Native HTML Element Styling*: Enjoy consistent, beautiful styles out of the box for all native HTML elements, or take full control to customize the styles to fit your unique brand identity.
+
+**Developer-Friendly, Community-Driven**
+- *Open Source Collaboration*: As an open source library, we encourage and support community contributions, making our CSS library constantly evolve with the needs and innovations of developers like you.
+
+**Lightweight Code, Heavyweight Performance**
+- *Optimized for Speed*: Our CSS library is designed to be lightweight, ensuring that your website loads quickly, providing a better user experience and improving SEO rankings.
+
+**Future-Proof Your Project**
+- *Regular Updates and Improvements*: With a commitment to staying up-to-date with the latest web standards, our library ensures that your project remains at the forefront of web design trends and best practices.
+
+ -->
 </BaseLayout>
+
+<!-- 
+  accordion
+  body
+  button
+  checkbox
+  dropdown
+  input
+  header
+  footer
+  modal
+  radio
+  select
+  switch
+  table
+  textarea
+  tooltip
+  h1 - h4
+  p
+  blockquote
+  a
+  ol
+  ul
+ -->
+
+<style>
+  .section {
+    @apply container px-6 mx-auto;
+  }
+
+  .element-tag {
+    @apply px-4 py-2 bg-brand-300 text-brand-950 rounded border-b-8 border-b-brand-700 cursor-pointer;
+  }
+  .bento-card {
+    @apply px-3 py-6 bg-surface-200 dark:bg-surface-900 rounded;
+  }
+</style>

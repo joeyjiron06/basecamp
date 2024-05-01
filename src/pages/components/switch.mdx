@@ -4,7 +4,6 @@ title: Switch
 subtitle: A switch component in pure CSS, using the checkbox syntax.
 ---
 
-
 import CodePreview from '~/components/codePreview.astro';
 
 
@@ -24,14 +23,8 @@ import CodePreview from '~/components/codePreview.astro';
   lang='html'
 >
   <fieldset>
-    <label>
-      <input name="terms" type="checkbox" role="switch" />
-      I agree to the Terms
-    </label>
-    <label>
-      <input name="opt-in" type="checkbox" role="switch" checked />
-      Receive news and offers
-    </label>
+    <label><input name="terms" type="checkbox" role="switch" />I agree to the Terms</label>
+    <label><input name="opt-in" type="checkbox" role="switch" checked />Receive news and offers</label>
   </fieldset>
 </CodePreview>
 
@@ -54,13 +47,7 @@ import CodePreview from '~/components/codePreview.astro';
   lang='html'
 >
   <fieldset>
-    <label>
-      <input name="publish" type="checkbox" role="switch" disabled />
-      Publish on my profile
-    </label>
-    <label>
-      <input name="change-password" type="checkbox" role="switch" checked disabled />
-      Change my password at next login
-    </label>
+    <label><input name="publish" type="checkbox" role="switch" disabled />Publish on my profile</label>
+    <label><input name="change-password" type="checkbox" role="switch" checked disabled />Change my password at next login</label>
   </fieldset>
 </CodePreview>
