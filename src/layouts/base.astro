@@ -42,28 +42,26 @@ const ProjectName = 'Snips';
         <Logo />
       </div>
 
-      <nav>
-        <ul>
-          <li class='hidden sm:flex'>
-            <a href=`${import.meta.env.BASE_URL}/docs`>Docs</a>
-          </li>
-          <li>
-            <a href='https://github.com/joeyjiron06/snips'>
-              <GithubIcon customClasses='w-4 h-4' />
-            </a>
-          </li>
-          <li>
-            <a href='https://twitter.com/joeyjiron06'>
-              <TwitterLogo customClasses='w-4 h-4' />
-            </a>
-          </li>
-          <li>
-            <button id='theme-toggle' class='btn-ghost px-2'>
-              <MoonIcon customClasses='w-4 h-4 block dark:hidden' />
-              <SunIcon customClasses='w-4 h-4 hidden dark:block' />
-            </button>
-          </li>
-        </ul>
+      <nav class='flex items-center gap-2'>
+        <a
+          class='hidden sm:flex btn btn-ghost'
+          href=`${import.meta.env.BASE_URL}/docs`>Docs</a
+        >
+
+        <a
+          href='https://github.com/joeyjiron06/snips'
+          class='btn btn-ghost px-2'>
+          <GithubIcon customClasses='w-4 h-4' />
+        </a>
+
+        <a href='https://twitter.com/joeyjiron06' class='btn btn-ghost px-2'>
+          <TwitterLogo customClasses='w-4 h-4' />
+        </a>
+
+        <button id='theme-toggle' class='btn-ghost px-2'>
+          <MoonIcon customClasses='w-4 h-4 block dark:hidden' />
+          <SunIcon customClasses='w-4 h-4 hidden dark:block' />
+        </button>
       </nav>
     </header>
 

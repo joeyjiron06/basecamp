@@ -1,67 +1,69 @@
-body {
-  /* sizing */
-  @apply pb-10 w-screen min-w-full min-h-screen overflow-x-hidden;
-
-  /* colors - light*/
-  @apply text-base text-foreground-950 bg-surface-50;
-
-  /* colors - dark */
-  @apply dark:text-foreground-50 dark:bg-surface-950;
-}
-
-header {
-  /* sizing */
-  @apply w-full sticky top-0 left-0 z-30 flex justify-between items-center  px-4 py-2;
-
-  /* colors - light */
-  @apply border-b bg-surface-50;
-
-  /* colors - dark */
-  @apply dark:bg-surface-950 dark:border-b-surface-800;
-
-  nav {
-    ul {
-      @apply list-none flex gap-2 py-0 my-0 text-sm font-normal;
-
-      li {
-        @apply flex items-center opacity-75 transition-all duration-200;
-
-        &:hover {
-          @apply opacity-85;
-        }
-
-        a {
-          @apply no-underline font-normal align-middle;
-
-
-          &:has(svg) {
-            @apply p-2;
-            &:hover {
-              @apply bg-surface-200 rounded;
-              @apply dark:bg-surface-800;
-            }
+@layer base {
+  body {
+    /* sizing */
+    @apply pb-10 w-screen min-w-full min-h-screen overflow-x-hidden;
+  
+    /* colors - light*/
+    @apply text-base text-foreground-950 bg-surface-50;
+  
+    /* colors - dark */
+    @apply dark:text-foreground-50 dark:bg-surface-950;
+  }
+  
+  header {
+    /* sizing */
+    @apply w-full sticky top-0 left-0 z-30 flex justify-between items-center  px-4 py-2;
+  
+    /* colors - light */
+    @apply border-b bg-surface-50;
+  
+    /* colors - dark */
+    @apply dark:bg-surface-950 dark:border-b-surface-800;
+  
+    nav {
+      ul {
+        @apply list-none flex gap-2 py-0 my-0 text-sm font-normal;
+  
+        li {
+          @apply flex items-center opacity-75 transition-all duration-200;
+  
+          &:hover {
+            @apply opacity-85;
           }
-
-          svg {
-            @apply w-4 h-4
+  
+          a {
+            @apply no-underline font-normal align-middle my-0;
+  
+  
+            &:has(svg) {
+              @apply p-2;
+              &:hover {
+                @apply bg-surface-200 rounded;
+                @apply dark:bg-surface-800;
+              }
+            }
+  
+            svg {
+              @apply w-4 h-4
+            }
           }
         }
       }
     }
   }
-}
-
-footer {
-  @apply grid grid-cols-2 md:grid-cols-3;
   
-  nav {
-    @apply space-y-1;
-
-    a {
-      @apply block opacity-70 transition-opacity duration-200 ease-in-out;
-
-      &:hover {
-        @apply opacity-90 underline;
+  footer {
+    @apply grid grid-cols-2 md:grid-cols-3;
+    
+    nav {
+      @apply space-y-1;
+  
+      a {
+        @apply block opacity-70 transition-opacity duration-200 ease-in-out;
+  
+        &:hover {
+          @apply opacity-90 underline;
+        }
       }
     }
   }

@@ -1,7 +1,6 @@
 /* visible state */
 /* TODO: apply to button and other elements  */
 /* TODO: change all active items to use "brand" color  */
-
 @import './config.css';
 @import './layout.css';
 @import './typography.css';
@@ -16,5 +15,8 @@
 @import './switch.css';
 @import './table.css';
 @import './textarea.css';
-/* @import './tooltip.css'; */
-/* @import './typography.css'; */
+@import './tooltip.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

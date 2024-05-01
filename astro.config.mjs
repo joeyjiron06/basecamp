@@ -9,7 +9,10 @@ export default defineConfig({
   site: 'https://github.com/joeyjiron06',
   base: '/snips',
   integrations: [
-    tailwind({ nesting: true }),
+    tailwind({
+      nesting: true,
+      applyBaseStyles: false,
+    }),
     mdx({
       syntaxHighlight: 'shiki',
       shikiConfig: { theme: 'github-dark' },

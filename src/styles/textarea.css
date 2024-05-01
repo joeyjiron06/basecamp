@@ -1,14 +1,16 @@
-textarea {
-  @apply text-sm w-full min-h-20 px-3 py-2 rounded bg-surface-50 border border-surface-300 placeholder:text-foreground-500;
-  @apply dark:bg-surface-950 dark:border-surface-800;
+@layer base {
+  textarea {
+    @apply text-sm w-full min-h-20 px-3 py-2 rounded bg-surface-50 border border-surface-300 placeholder:text-foreground-500;
+    @apply dark:bg-surface-950 dark:border-surface-800;
 
-  @apply validation-states;
+    @apply validation-states;
 
-  &:focus-visible {
-    @apply focused;
-  }
+    &:focus-visible {
+      @apply focused;
+    }
 
-  &:disabled {
-    @apply disabled;
+    &:disabled {
+      @apply disabled;
+    }
   }
 }

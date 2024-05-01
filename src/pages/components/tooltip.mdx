@@ -1,0 +1,25 @@
+---
+layout: ~/layouts/docs.astro
+title: Tooltip
+subtitle: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+---
+
+import CodePreview from '~/components/codePreview.astro';
+
+
+<CodePreview 
+  code={`
+<button data-tooltip="Top">Top</button>
+<button data-tooltip="Right" data-placement="right">Right</button>
+<button data-tooltip="Bottom" data-placement="bottom">Bottom</button>
+<button data-tooltip="Left" data-placement="left">Left</button>
+  `}
+  lang='html'
+>
+<div className='flex flex-col items-start gap-4'>
+  <button data-tooltip="Top">Top</button>
+  <button data-tooltip="Right" data-placement="right">Right</button>
+  <button data-tooltip="Bottom" data-placement="bottom">Bottom</button>
+  <button data-tooltip="Left" data-placement="left">Left</button>
+</div>
+</CodePreview>

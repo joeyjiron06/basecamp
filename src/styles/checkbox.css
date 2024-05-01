@@ -1,108 +1,111 @@
-input[type="checkbox"]:not([role="switch"]) {
-  /* spacing */
-  @apply w-4 h-4 align-middle ml-0 mt-0 mb-0 mr-2 bg-transparent appearance-none select-none rounded cursor-pointer inline-block bg-no-repeat transition-[background] duration-150;
+@layer base {
+  input[type="checkbox"]:not([role="switch"]) {
+    /* spacing */
+    @apply w-4 h-4 align-middle ml-0 mt-0 mb-0 mr-2 bg-transparent appearance-none select-none rounded cursor-pointer inline-block bg-no-repeat transition-[background] duration-150;
 
-  /* color */
-  @apply border border-surface-950;
+    /* color */
+    @apply border border-surface-950;
 
-  /* dark mode */
-  @apply dark:border-surface-50;
+    /* dark mode */
+    @apply dark:border-surface-50;
 
-  --svg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' class='w-4 h-4'><path fill-rule='evenodd' d='M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z' clip-rule='evenodd' /></svg>");
+    --svg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' class='w-4 h-4'><path fill-rule='evenodd' d='M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z' clip-rule='evenodd' /></svg>");
 
-  &:checked {
-    @apply bg-surface-950 dark:bg-surface-50;
+    &:checked {
+      @apply bg-surface-950 dark:bg-surface-50;
 
-   @apply relative;
-    
-    &::before {
-      content: '';
-      @apply absolute inset-0 w-4 h-4 bg-foreground-50 dark:bg-foreground-950;
+    @apply relative;
+      
+      &::before {
+        content: '';
+        @apply absolute inset-0 w-4 h-4 bg-foreground-50 dark:bg-foreground-950;
 
-      -webkit-mask: var(--svg);
-      mask: var(--svg);
+        -webkit-mask: var(--svg);
+        mask: var(--svg);
 
-      animation: checkmark 0.2s ease-out;
+        animation: checkmark 0.2s ease-out;
+      }
+    }
+
+    &:focus-visible {
+      @apply outline outline-2 outline-offset-2 outline-surface-950;
+      @apply dark:outline-surface-50;
+    }
+
+    &:disabled {
+      @apply pointer-events-none opacity-50;
     }
   }
 
-  &:focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-surface-950;
-    @apply dark:outline-surface-50;
+  @keyframes checkmark {
+    0% {
+      mask-position: 0 5px;
+    }
+
+    50% {
+      mask-position: 0 -2px;
+    }
+
+    to {
+      mask-position: 0;
+    }
   }
 
-  &:disabled {
-    @apply pointer-events-none opacity-50;
-  }
-}
+  label:has(input[type="checkbox"]) {
+    @apply flex items-center cursor-pointer justify-start;
 
-@keyframes checkmark {
-  0% {
-    mask-position: 0 5px;
-  }
+    & *:not(input[type="checkbox"]) {
+      @apply pb-0 mb-0;
+    }
 
-  50% {
-    mask-position: 0 -2px;
-  }
+    /* label text when input is disabled  */
+    & input[type="checkbox"]:disabled + *{
+      @apply opacity-25;
+    }
 
-  to {
-    mask-position: 0;
-  }
-}
-
-label:has(input[type="checkbox"]) {
-  @apply flex items-center cursor-pointer justify-start;
-
-  & *:not(input[type="checkbox"]) {
-    @apply pb-0 mb-0;
+    /* disabled cursor on whole container */
+    &:has(input[type="checkbox"]:disabled) {
+      @apply cursor-not-allowed;
+    }
   }
 
-  /* label text when input is disabled  */
-  & input[type="checkbox"]:disabled + *{
-    @apply opacity-25;
+  /* 
+  horizontal stacking 
+  margin on right except the last one 
+  */
+
+  input[type=checkbox]~label:not(:last-of-type) {
+    @apply mr-6;
   }
 
-  /* disabled cursor on whole container */
-  &:has(input[type="checkbox"]:disabled) {
-    @apply cursor-not-allowed;
+  /* align the label to the middle  */
+  input[type=checkbox]~label {
+    @apply align-middle;
   }
-}
 
-/* 
-horizontal stacking 
-margin on right except the last one 
-*/
+  /* validation states */
+  input[type=checkbox][aria-invalid=true] {
+    @apply border-red-500;
 
-input[type=checkbox]~label:not(:last-of-type) {
-  @apply mr-6;
-}
-
-/* align the label to the middle  */
-input[type=checkbox]~label {
-  @apply align-middle;
-}
-
-/* validation states */
-input[type=checkbox][aria-invalid=true] {
-  @apply border-red-500;
-
-  &:checked {
-    @apply bg-red-500;
+    &:checked {
+      @apply bg-red-500;
+    }
   }
-}
 
-label:has(input[type="checkbox"][aria-invalid=true]) {
-  @apply text-red-500;
-}
-
-input[type=checkbox][aria-invalid=false] {
-  @apply border-green-500;
-
-  &:checked {
-    @apply bg-green-500;
+  label:has(input[type="checkbox"][aria-invalid=true]) {
+    @apply text-red-500;
   }
-}
 
-label:has(input[type="checkbox"][aria-invalid=false]) {
-  @apply text-green-500;
+  input[type=checkbox][aria-invalid=false] {
+    @apply border-green-500;
+
+    &:checked {
+      @apply bg-green-500;
+    }
+  }
+
+  label:has(input[type="checkbox"][aria-invalid=false]) {
+    @apply text-green-500;
+  }
+
 }

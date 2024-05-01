@@ -1,20 +1,22 @@
-select {
-  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='rgb(115,115,115)' width='16' height='16' %3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E%0A");
+@layer base {
+  select {
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='rgb(115,115,115)' width='16' height='16' %3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E%0A");
 
-  @apply text-foreground-950 border border-surface-300 rounded text-sm pl-3 pr-8 py-2 relative z-10 appearance-none; 
-  @apply dark:bg-surface-950 dark:text-foreground-50 dark:border-surface-800;
+    @apply text-foreground-950 border border-surface-300 rounded text-sm pl-3 pr-8 py-2 relative z-10 appearance-none; 
+    @apply dark:bg-surface-950 dark:text-foreground-50 dark:border-surface-800;
 
-  background-image: var(--svg);
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: calc(100% - 8px);
+    background-image: var(--svg);
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: calc(100% - 8px);
 
-  &:focus-visible {
-    @apply focused;
-  }
+    &:focus-visible {
+      @apply focused;
+    }
 
-  &:disabled {
-    @apply disabled;
+    &:disabled {
+      @apply disabled;
+    }
   }
 }
 

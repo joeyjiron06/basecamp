@@ -1,32 +1,33 @@
+@layer base {
+  input[type="checkbox"][role="switch"] {
+    @apply w-9 h-5 rounded-full leading-5 bg-surface-300 appearance-none cursor-pointer;
+    background-image: none;
 
-input[type="checkbox"][role="switch"] {
-  @apply w-9 h-5 rounded-full leading-5 bg-surface-300 appearance-none cursor-pointer;
-  background-image: none;
-
-  @apply dark:bg-surface-800;
-
-  &::before {
-    @apply block aspect-[1] h-full rounded-full transition-[margin] duration-100 ease-in-out bg-surface-50 border-2 border-surface-300;
-    @apply dark:bg-surface-950 dark:border-surface-800;
-    content: "";
-  }
-
-
-  &:checked {
-    @apply bg-surface-950;
-    @apply dark:bg-surface-50;
+    @apply dark:bg-surface-800;
 
     &::before {
-      @apply ms-4 bg-surface-50 border-surface-950;
-      @apply dark:bg-surface-950 dark:border-surface-50;
+      @apply block aspect-[1] h-full rounded-full transition-[margin] duration-100 ease-in-out bg-surface-50 border-2 border-surface-300;
+      @apply dark:bg-surface-950 dark:border-surface-800;
+      content: "";
+    }
+
+
+    &:checked {
+      @apply bg-surface-950;
+      @apply dark:bg-surface-50;
+
+      &::before {
+        @apply ms-4 bg-surface-50 border-surface-950;
+        @apply dark:bg-surface-950 dark:border-surface-50;
+      }
+    }
+
+    &:focus-visible {
+      @apply focused;
     }
   }
 
-  &:focus-visible {
-    @apply focused;
+  label:has(input[type="checkbox"][role="switch"]) {
+    @apply space-x-2;
   }
-}
-
-label:has(input[type="checkbox"][role="switch"]) {
-  @apply space-x-2;
 }
