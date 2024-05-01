@@ -14,3 +14,17 @@
 .disabled {
   @apply cursor-not-allowed opacity-50;
 }
+
+.validation-states {
+  &[aria-invalid="true"] {
+    @apply border-red-500;
+  }
+
+  &[aria-invalid="false"] {
+    @apply border-green-500;
+  }
+
+  &[aria-invalid="true"]+small {
+    @apply text-red-500;
+  }
+}

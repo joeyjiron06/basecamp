@@ -1,0 +1,76 @@
+---
+layout: ~/layouts/docs.astro
+title: Textarea
+subtitle: The native <textarea> is styled like the input for consistency.
+---
+
+import CodePreview from '~/components/codePreview.astro';
+
+
+<CodePreview 
+  code={`
+<textarea
+  name="bio"
+  placeholder="Write a professional short bio..."
+  aria-label="Professional short bio"
+>
+</textarea>
+  `}
+  lang='html'
+>
+  <textarea
+    name="bio"
+    placeholder="Write a professional short bio..."
+    aria-label="Professional short bio"
+  >
+  </textarea>
+</CodePreview>
+
+## Disabled textarea
+
+
+
+<CodePreview 
+  code={`
+<textarea name="disabled" disabled>
+  Disabled
+</textarea>
+  `}
+  lang='html'
+>
+  <textarea name="disabled" disabled>Disabled</textarea>
+</CodePreview>
+
+
+## Validation states
+
+<CodePreview 
+  code={`
+<textarea name="valid" aria-invalid="false">
+  Valid
+</textarea>
+
+<textarea
+  name="invalid"
+  aria-invalid="true"
+  aria-describedby="invalid-helper"
+>
+  Invalid
+</textarea>
+
+<small id="invalid-helper">
+  Please provide a valid value!
+</small>
+  `}
+  lang='html'
+>
+  <div className='space-y-6'>
+    <textarea name="valid" aria-invalid="false">Valid</textarea>
+
+    <textarea
+      name="invalid"
+      aria-invalid="true"
+      aria-describedby="invalid-helper"
+    >Invalid</textarea><small id="invalid-helper">Please provide a valid value!</small>
+  </div>
+</CodePreview>
