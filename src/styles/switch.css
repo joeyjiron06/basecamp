@@ -4,8 +4,6 @@ input[type="checkbox"][role="switch"] {
   background-image: none;
 
   @apply dark:bg-surface-800;
-  
-
 
   &::before {
     @apply block aspect-[1] h-full rounded-full transition-[margin] duration-100 ease-in-out bg-surface-50 border-2 border-surface-300;
@@ -22,6 +20,10 @@ input[type="checkbox"][role="switch"] {
       @apply ms-4 bg-surface-50 border-surface-950;
       @apply dark:bg-surface-950 dark:border-surface-50;
     }
+  }
+
+  &:focus-visible {
+    @apply focused;
   }
 }
 
