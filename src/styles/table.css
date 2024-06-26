@@ -1,0 +1,73 @@
+@layer base {
+  table {
+    @apply leading-loose mb-8 mt-8 table-auto text-left text-sm w-full;
+
+    thead {
+      @apply border-b border-b-surface-300;
+      @apply dark:border-b-surface-600;
+    }
+
+    thead th {
+      @apply align-bottom font-semibold pb-2 pl-2 pr-2 text-foreground-900;
+      @apply dark:text-foreground-50;
+      @apply sm:pb-2.5 sm:pl-4 sm:pr-4;
+      @apply lg:pb-3 lg:pl-3 lg:pr-3;
+      @apply xl:pb-3.5 xl:pl-2.5 xl:pr-2.5;
+      @apply 2xl:pb-3 2xl:pl-2 2xl:pr-2;
+    }
+
+    tbody tr {
+      @apply border-b border-b-foreground-200;
+      @apply dark:border-b-foreground-700;
+    }
+
+    tbody tr:last-child {
+      @apply border-b-0;
+    }
+
+    tbody td {
+      @apply align-baseline;
+    }
+
+    tfoot {
+      @apply border-t border-t-foreground-300;
+      @apply dark:border-t-foreground-600;
+    }
+    
+    tfoot td {
+      @apply align-top;
+    }
+
+    thead th:last-child {
+      @apply pr-0;
+      @apply sm:pr-0;
+      @apply lg:pr-0;
+      @apply xl:pr-0;
+      @apply 2xl:pr-0;
+    }
+
+    tbody td, tfoot td {
+      @apply pb-2 pl-2 pr-2 pt-2;
+      @apply sm:pb-2.5 sm:pl-4 sm:pr-4 sm:pt-2.5;
+      @apply lg:pb-3 lg:pl-3 lg:pr-3 lg:pt-3;
+      @apply xl:pb-3.5 xl:pl-2.5 xl:pr-2.5 xl:pt-3.5;
+      @apply 2xl:pb-3 2xl:pl-2 2xl:pr-2 2xl:pt-3;
+    }
+
+    tbody td:first-child, tfoot td:first-child {
+      @apply pl-0;
+      @apply sm:pl-0;
+      @apply lg:pl-0;
+      @apply xl:pl-0;
+      @apply 2xl:pl-0;
+    }
+
+    tbody td:last-child, tfoot td:last-child {
+      @apply pr-0;
+      @apply sm:pr-0;
+      @apply lg:pr-0;
+      @apply xl:pr-0;
+      @apply 2xl:pr-0;
+    }
+  }
+}

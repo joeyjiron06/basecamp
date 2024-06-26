@@ -1,0 +1,61 @@
+@layer base {
+  .input {
+    @apply flex items-center bg-transparent rounded border px-3 py-2 max-w-xs text-sm bg-surface-50 border-surface-300 text-foreground-800;
+
+    @apply dark:bg-surface-950 dark:border-surface-800 dark:text-foreground-400;
+
+    &:disabled {
+      @apply disabled;
+    }
+
+    @apply validation-states;
+  }
+
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="time"] {
+    @apply input dark:[color-scheme:dark];
+
+
+    &:focus-visible {
+      @apply focused;
+    }
+  }
+
+  label:has(
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="url"]
+  ) {
+    @apply input;
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="url"] {
+      @apply border-none outline-none py-0;
+    }
+
+    &:focus-within {
+      @apply focused;
+    }
+  }
+
+  label:has(input:disabled) {
+    @apply disabled;
+  } 
+
+}

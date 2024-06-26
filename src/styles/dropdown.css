@@ -1,0 +1,49 @@
+@layer base {
+  details.dropdown {
+    @apply relative;
+
+    summary {
+      @apply list-none cursor-pointer border inline-block rounded btn btn-outline;
+
+      
+      /* aka pressed */
+      &:active:focus {
+        @apply scale-100;
+        transform: none;
+      }
+    }
+
+    &[open] summary:before {
+      content: "";
+      @apply block z-[1] fixed w-screen h-screen inset-0 cursor-default;
+
+        /* aka pressed */
+        &:active:focus {
+          @apply scale-100;
+        }
+    }
+
+    
+    ul {
+      @apply absolute top-full p-1 shadow z-[1] bg-surface-50 rounded border list-none mt-1;
+      @apply  dark:bg-surface-950 dark:border-surface-900;
+
+      li {
+        @apply btn btn-ghost;
+        display: block;
+      }
+    }
+
+    /* ul {
+      li {
+        @apply cursor-pointer px-4 py-2 rounded transition-[background] duration-150 ease-in-out;
+        
+        &:hover {
+          @apply bg-surface-200;
+          @apply dark:bg-surface-900;
+        }
+      }
+    }  */
+  }
+
+}

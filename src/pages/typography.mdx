@@ -1,0 +1,195 @@
+---
+layout: ~/layouts/docs.astro
+title: Typography
+subtitle: All typographic elements are responsive and scale gracefully across devices and viewports.
+---
+
+import CodePreview from '~/components/codePreview.astro'
+import Code from '~/components/code.astro'
+
+
+## Headings
+
+<CodePreview
+  lang='html'
+  code={`
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+  `}
+>
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+</CodePreview>
+
+
+## Heading group
+
+<div class="flex flex-wrap gap-2 mb-6">Inside a <Code code='<hgroup>' inline lang='html' />, margins are collapsed, and the <Code code=':last-child' inline lang='css' /> is muted.</div>
+
+<CodePreview
+lang="html"
+code={`
+<hgroup>
+  <h1>Get inspired with CSS</h1>
+  <p>How to use CSS to add glam to your Website?</p>
+</hgroup>
+`}
+>
+<hgroup>
+  <h1>Get inspired with CSS</h1>
+  <p>How to use CSS to add glam to your Website?</p>
+</hgroup>
+</CodePreview>
+
+
+## Inline text elements
+
+<div className='grid grid-cols-1 sm:grid-cols-2'>
+  <div className='flex flex-col gap-3'>
+    <div className="flex gap-2">
+      <abbr title="Abbreviation">Abbr.</abbr>
+      <Code inline lang='html' code='<abbr>' />
+    </div>
+
+    <div className="flex gap-2">
+      <b>Bold</b>
+      <Code inline lang='html' code='<strong>' />
+      <Code inline lang='html' code='<b>' />
+    </div>
+
+    <div className="flex gap-2">
+      <i>Italic</i>
+      <Code inline lang='html' code='<i>' />
+      <Code inline lang='html' code='<em>' />
+      <Code inline lang='html' code='<cite>' />
+    </div>
+
+    <div className="flex gap-2">
+      <del>Deleted</del>
+      <Code inline lang='html' code='<del>' />
+    </div>
+
+    <div className="flex gap-2">
+      <ins>Inserted</ins>
+      <Code inline lang='html' code='<ins>' />
+    </div>
+
+    <div className="flex gap-2">
+      <kbd>Ctrl + S</kbd>
+      <Code inline lang='html' code='<kbd>' />
+    </div>
+
+    <div className="flex gap-2">
+      <p><a href='https://google.com'>Link</a></p>
+      <Code inline lang='html' code='<a>' />
+    </div>
+  </div>
+
+  <div className='flex flex-col gap-3'>
+    <div className="flex gap-2">
+      <mark>Highlighted</mark>
+      <Code inline lang='html' code='<mark>' />
+    </div>
+
+    <div className="flex gap-2">
+      <s>Strikethrough</s>
+      <Code inline lang='html' code='<s>' />
+    </div>
+
+    <div className="flex gap-2">
+      <small>Small</small>
+      <Code inline lang='html' code='<small>' />
+    </div>
+
+    <div className="flex gap-2">
+      <span>Text <sub>Sub</sub></span>
+      <Code inline lang='html' code='<sub>' />
+    </div>
+
+    <div className="flex gap-2">
+      <span>Text <sup>Sup</sup></span>
+      <Code inline lang='html' code='<sup>' />
+    </div>
+
+    <div className="flex gap-2">
+      <u>Underline</u>
+      <Code inline lang='html' code='<u>' />
+    </div>
+
+  </div>
+</div>
+
+## Blockquote
+
+<CodePreview
+  code={`
+<blockquote>
+  “Design is a funny word. Some people think 
+  design means how it looks. But of course, if 
+  you dig deeper, it's really how it works.”
+  <footer>
+    <cite>— Steve Jobs</cite>
+  </footer>
+</blockquote>
+`}
+  lang='html'
+>
+<blockquote>
+  Design is a funny word. Some people think 
+  design means how it looks. But of course, if 
+  you dig deeper, it's really how it works.
+  <footer>
+    <cite>— Steve Jobs</cite>
+  </footer>
+</blockquote>
+</CodePreview>
+
+## Horizontal rule
+
+<CodePreview
+  code={`
+<p>Paragraph before the horizontal line.</p>
+<hr />
+<p>Paragraph after the horizontal line.</p>
+`}
+  lang='html'
+>
+<p>Paragraph before the horizontal line.</p>
+<hr />
+<p>Paragraph after the horizontal line.</p>
+</CodePreview>
+
+
+## Lists
+
+<CodePreview
+  code={`
+<p>Paragraph before the horizontal line.</p>
+<hr />
+<p>Paragraph after the horizontal line.</p>
+`}
+  lang='html'
+>
+<b>Ordered List</b>
+
+<ol>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ol>
+
+
+<b>Unrrdered List</b>
+
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+
+</CodePreview>

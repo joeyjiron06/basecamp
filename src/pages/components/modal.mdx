@@ -1,0 +1,46 @@
+---
+layout: ~/layouts/docs.astro
+title: Modal
+subtitle: The classic modal component with graceful spacings across devices and viewports, using the semantic HTML tag <dialog>.
+---
+
+import CodePreview from '~/components/codePreview.astro';
+
+Using the HTML native modal dialog element and a simple 1 liner javascript, you can open a modal. to close the dialog, you can put in a form element with a method of `dialog` in it and any buttons in it will automatically close the dialog.
+
+More reading [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog).
+
+<CodePreview 
+  class="not-prose"
+  code={`
+<button onclick="my_modal_1.showModal()">open modal</button>
+
+<dialog id="my_modal_1">
+  <h3>Are you absolutely sure?</h3>
+  <p>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+
+  <footer>
+    <form method="dialog">
+      {/* <!-- if there is a button in form, it will close the modal --> */}
+      <button class="btn-outline">Cancel</button>
+      <button>Continue</button>
+    </form>
+  </footer>
+</dialog>
+  `}
+  lang='html'
+>
+  <button  onclick="my_modal_1.showModal()">open modal</button>
+  <dialog id="my_modal_1">
+    <form method="dialog">
+      <h3>Are you absolutely sure?</h3>
+      <p>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+
+      <footer>
+        <button class="btn-outline mr-2">Cancel</button>
+        <button>Continue</button>
+      </footer>
+    </form>
+  </dialog>
+</CodePreview>
+

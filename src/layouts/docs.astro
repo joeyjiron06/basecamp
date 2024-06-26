@@ -1,14 +1,39 @@
 ---
-import BaseLayout from "./base.astro";
+import BaseLayout from './base.astro';
 
 const { title, subtitle } = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout title={title} autoExpandSidebar={true}>
-  <article class="w-full max-w-page px-4 md:px-4 mx-auto pt-6
-  prose">
-    <h1>{title}</h1>
-    {subtitle ? <p>{subtitle}</p> : null}
+  <article class='mx-auto w-full max-w-page px-4 pt-6 md:px-4'>
+    <hgroup>
+      <h1>{title}</h1>
+      {subtitle ? <p>{subtitle}</p> : null}
+    </hgroup>
     <slot />
   </article>
 </BaseLayout>
+
+<style is:global>
+  p {
+    @apply mb-6;
+  }
+
+  h1[id],
+  h2[id],
+  h3[id],
+  h4[id] {
+    scroll-margin-top: 6rem;
+  }
+</style>
+
+<script>
+  const hash = window.location.hash;
+
+  if (hash) {
+    const element = document.getElementById(hash.replace('#', ''));
+    if (element) {
+      element.scrollIntoView({ behavior: 'instant' });
+    }
+  }
+</script>

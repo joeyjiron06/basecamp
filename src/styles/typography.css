@@ -1,58 +1,186 @@
-/* HEADINGS */
-hgroup {
-  @apply flex flex-col gap-4;
-
-  & p {
-    @apply font-normal opacity-85;
+@layer base {
+  /* headings */
+  h1 {
+    @apply font-extrabold leading-tight mb-3.5 mt-0 text-4xl;
+    @apply sm:leading-tight sm:mb-3 sm:mt-0 sm:text-3xl;
+    @apply lg:leading-none lg:mb-3 lg:mt-0 lg:text-4xl;
+    @apply xl:leading-none xl:mb-3 xl:mt-0 xl:text-4xl;
+    @apply 2xl:leading-none 2xl:mb-3.5 2xl:mt-0 2xl:text-4xl;
   }
-}
 
-h1 {
-  @apply scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl;
-}
+  h2 {
+    @apply font-bold leading-snug mb-4 mt-8 text-2xl;
+    @apply sm:leading-normal sm:mb-3 sm:mt-6 sm:text-xl;
+    @apply lg:leading-snug lg:mb-4 lg:mt-7 lg:text-2xl;
+    @apply xl:leading-tight xl:mb-3.5 xl:mt-6 xl:text-2xl;
+    @apply 2xl:leading-tight 2xl:mb-3 2xl:mt-6 2xl:text-3xl;
+  }
 
-h2 {
-  @apply scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0;
-}
+  h3 {
+    @apply font-semibold leading-relaxed mb-2 mt-6 text-xl;
+    @apply sm:leading-relaxed sm:mb-1.5 sm:mt-6 sm:text-xl;
+    @apply lg:leading-normal lg:mb-2.5 lg:mt-6 lg:text-xl;
+    @apply xl:leading-snug xl:mb-2.5 xl:mt-6 xl:text-2xl;
+    @apply 2xl:leading-tight 2xl:mb-2.5 2xl:mt-6 2xl:text-2xl;
+  }
 
-h3 {
-  @apply scroll-m-20 text-2xl font-semibold tracking-tight;
-}
+  h4 {
+    @apply font-semibold leading-normal mb-2 mt-6;
+    @apply sm:leading-normal sm:mb-2 sm:mt-5;
+    @apply lg:leading-relaxed lg:mb-1.5 lg:mt-7;
+    @apply xl:leading-relaxed xl:mb-2 xl:mt-7;
+    @apply 2xl:leading-normal 2xl:mb-2.5 2xl:mt-6;
+  }
 
-h4 {
-  @apply scroll-m-20 text-xl font-semibold tracking-tight;
-}
+  hgroup {
+    @apply mb-4 space-y-2;
 
-/* modifiers */
+    &>* {
+      @apply mt-0 mb-0;
+    }
 
-small {
-  @apply text-xs;
-}
+    p {
+      @apply text-foreground-500 dark:text-foreground-300;
+    }
+  }
 
-em {
-  @apply italic;
-}
+  /* hgroup > *:last-child {
+    @apply mt-0 text-foreground-500 dark:text-foreground-300;
+  } */
 
-b {
-  @apply font-bold;
-}
+  /* other */
 
-strong {
-  @apply font-extrabold;
-}
+  blockquote {
+    @apply border-l-4 border-l-foreground-200 font-normal italic mb-6 mt-6 pl-4 text-foreground-900;
+    @apply dark:border-l-foreground-700 dark:text-foreground-100;
+    /* quotes: "\"\\201C\"\"\\201D\"\"\\2018\"\"\\2019\"", */
+    @apply sm:mb-5 sm:mt-5 sm:pl-4;
+    @apply lg:mb-6 lg:mt-6 lg:pl-4;
+    @apply xl:mb-6 xl:mt-6 xl:pl-4;
+    @apply 2xl:mb-7 2xl:mt-7 2xl:pl-4;
 
-i {
-  @apply italic;
-}
+    cite {
+      @apply opacity-60;
+    }
+  }
 
-mark {
-  @apply bg-base-200 px-2;
-}
 
-del {
-  @apply line-through;
-}
+  hr {
+    @apply border-foreground-200 border-t mb-12 mt-12;
+    @apply dark:border-foreground-700;
+    @apply sm:mb-11 sm:mt-11;
+    @apply lg:mb-12 lg:mt-12;
+    @apply xl:mb-11 xl:mt-11;
+    @apply 2xl:mb-12 2xl:mt-12;
 
-ins {
-  @apply underline;
+
+    & + * {
+      @apply mt-0;
+      @apply sm:mt-0;
+      @apply lg:mt-0;
+      @apply xl:mt-0;
+      @apply 2xl:mt-0;
+    }
+  }
+
+  p {
+    @apply text-foreground-600;
+    @apply dark:text-foreground-400;
+  }
+
+  p a {
+    @apply font-medium underline;
+  }
+
+  ol {
+    @apply list-decimal mb-5 mt-5 pl-6;
+    @apply sm:mb-4 sm:mt-4 sm:pl-6;
+    @apply lg:mb-5 lg:mt-5 lg:pl-6;
+    @apply xl:mb-4 xl:mt-4 xl:pl-6;
+    @apply 2xl:mb-5 2xl:mt-5 2xl:pl-6;
+
+
+    & > li {
+      @apply pl-1.5;
+      @apply sm:pl-1.5;
+      @apply lg:pl-1.5;
+      @apply xl:pl-1.5;
+      @apply 2xl:pl-1.5;
+    }
+
+    & > li::marker {
+      @apply font-normal text-foreground-500;
+      @apply dark:text-foreground-400;
+    }
+
+    & > li > *:first-child {
+      @apply mt-5;
+      @apply sm:mt-4;
+      @apply lg:mt-5;
+      @apply xl:mt-4;
+      @apply 2xl:mt-5;
+    }
+    
+    & > li > *:last-child {
+      @apply mb-5;
+      @apply sm:mb-4;
+      @apply lg:mb-5;
+      @apply xl:mb-4;
+      @apply 2xl:mb-5;
+    }
+  }
+
+  ul {
+    @apply list-disc mb-5 mt-5 pl-6;
+    @apply sm:mb-4 sm:mt-4 sm:pl-6;
+    @apply lg:mb-5 lg:mt-5 lg:pl-6;
+    @apply xl:mb-4 xl:mt-4 xl:pl-6;
+    @apply 2xl:mb-5 2xl:mt-5 2xl:pl-6;
+
+    & > li::marker {
+      @apply text-foreground-300;
+      @apply dark:text-foreground-600;
+    }
+
+    & > li {
+      @apply pl-1.5;
+      @apply sm:pl-1.5;
+      @apply lg:pl-1.5;
+      @apply xl:pl-1.5;
+      @apply 2xl:pl-1.5;
+    }
+    
+    & > li p {
+      @apply mb-3 mt-3;
+      @apply sm:mb-2 sm:mt-2;
+      @apply lg:mb-3.5 lg:mt-3.5;
+      @apply xl:mb-3 xl:mt-3;
+      @apply 2xl:mb-3 2xl:mt-3;
+    }
+    
+    & > li > *:first-child {
+      @apply mt-5;
+      @apply sm:mt-4;
+      @apply lg:mt-5;
+      @apply xl:mt-4;
+      @apply 2xl:mt-5;
+    }
+
+    & > li > *:last-child {
+      @apply mb-5;
+      @apply sm:mb-4;
+      @apply lg:mb-5;
+      @apply xl:mb-4;
+      @apply 2xl:mb-5;
+    }
+  }
+
+  /* nested lists */
+  ul ul, ul ol, ol ul, ol ol {
+    @apply mb-3 mt-3;
+    @apply sm:mb-2 sm:mt-2;
+    @apply lg:mb-3.5 lg:mt-3.5;
+    @apply xl:mb-3 xl:mt-3;
+    @apply 2xl:mb-2.5 2xl:mt-2.5;
+  }
 }

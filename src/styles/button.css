@@ -1,21 +1,85 @@
-.btn {
-  /* i like buttons slightly smaller than daisyui comes with */
-  @apply h-9 min-h-9;
+@layer base {
+  button,
+  [role="button"],
+  [type="submit"],
+  [type="reset"],
+  [type="button"],
+  .btn {
+    @apply h-9 min-h-9 inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-normal transition-colors px-4 py-2 cursor-pointer border-transparent border;
 
-  /* for styling icons */
-  & svg {
-    @apply w-4 h-4;
+    
+    /* COLORS */
+    @apply bg-surface-950 text-foreground-50; /* light mode */
+    @apply dark:bg-surface-50 dark:text-foreground-950; /* dark mode */
+    
+    @apply transition duration-150;
+
+    /* STATES */
+
+    &:hover {
+      @apply bg-opacity-90;
+    }
+
+    /* tabbed focus for screen readers */
+    &:focus-visible {
+      @apply outline outline-2 outline-offset-2 outline-surface-950;
+      @apply dark:outline-surface-50;
+    }
+
+    &:disabled {
+      @apply pointer-events-none opacity-50;
+    }
+
+    /* aka pressed */
+    &:active:focus {
+      @apply scale-[0.97];
+    }
+
+    /* ICONS */
+
+    & svg {
+      @apply w-4 h-4 stroke-current;
+    }
   }
-}
 
-button,
-[role="button"],
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
- @apply btn;
-}
+  .btn-accent {
+    @apply bg-brand-500 text-foreground-900;
 
-input[type="cancel"] {
-  @apply btn-ghost;
+    &:hover {
+      @apply bg-opacity-90;
+    }
+
+    &:focus-visible {
+      @apply outline-brand-500;
+    }
+  }
+
+  .btn-outline {
+    @apply bg-opacity-0 text-foreground-950 border-surface-200;
+    @apply dark:text-foreground-50 dark:border-surface-800;
+
+    &:hover {
+      /* @apply bg-opacity-20; */
+      @apply bg-surface-200;
+      @apply dark:bg-surface-800;
+    }
+
+    &.btn-accent {
+      @apply text-brand-500 border-brand-500;
+
+      &:hover {
+        @apply bg-brand-500 text-foreground-900;
+      }
+    }
+  }
+
+  .btn-ghost {
+    @apply bg-opacity-0 text-foreground-950;
+    @apply dark:text-foreground-50;
+
+    &:hover {
+      @apply bg-surface-200;
+      @apply dark:bg-surface-800;
+    }
+  }
 }

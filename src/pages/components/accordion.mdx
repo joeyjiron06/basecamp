@@ -1,0 +1,39 @@
+---
+layout: ../../layouts/docs.astro
+title: Accordion
+subtitle: Toggle sections of content in pure HTML, without JavaScript, using minimal and semantic markup.
+---
+
+import CodePreview from '~/components/codePreview.astro';
+
+
+## Usage
+
+<CodePreview 
+  class="not-prose"
+  code={`
+<details>
+  <summary>Open Me</summary>
+  <div>I am the content of the details</div>
+</details>
+
+<details>
+  <summary>Open Me Too</summary>
+  <div>I am the content of the details</div>
+  <div>I am more content</div>
+</details>
+  `}
+  lang='html'
+>
+  <details>
+    <summary>Open Me</summary>
+    <div> I am the content of the details</div>
+  </details>
+
+  <details>
+    <summary>Open Me Too</summary>
+    <div> I am the content of the details</div>
+    <div> I am more content</div>
+  </details>
+</CodePreview>
+

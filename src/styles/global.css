@@ -1,26 +1,22 @@
-@import "./typography.css";
-@import "./nav.css";
-@import "./button.css";
-@import "./sidebar.css";
-@import "./accordion.css";
-@import "./layout.css";
-@import "./checkbox.css";
+/* visible state */
+/* TODO: apply to button and other elements  */
+/* TODO: change all active items to use "brand" color  */
+@import './config.css';
+@import './layout.css';
+@import './typography.css';
+@import './accordion.css';
+@import './button.css';
+@import './checkbox.css';
+@import './dropdown.css';
+@import './input.css';
+@import './modal.css';
+@import './radio.css';
+@import './select.css';
+@import './switch.css';
+@import './table.css';
+@import './textarea.css';
+@import './tooltip.css';
 
-body {
-  @apply pb-10 w-screen min-h-screen overflow-x-hidden grid;
-  font-family: "Noto Sans", sans-serif;
-  font-optical-sizing: auto w-screen;
-
-}
-
-
-.card {
-  @apply p-4 rounded bg-base-100 dark:bg-transparent dark:border dark:border-base-100;
-}
-
-code {
-  @apply overflow-x-scroll max-w-full;
-  pre {
-    @apply max-w-full;
-  }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

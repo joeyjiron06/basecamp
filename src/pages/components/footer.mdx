@@ -1,0 +1,65 @@
+---
+layout: ~/layouts/docs.astro
+title: Footer
+subtitle: Create a footer component at the bottom of your page
+---
+
+import Code from '~/components/code.astro';
+import CodePreview from '~/components/codePreview.astro';
+
+
+## Usage
+
+<CodePreview 
+  code={`
+<footer>
+  <nav>
+    <h4>Services</h4>
+    <a href='#branding'>Branding</a>
+    <a href='#Design'>Design</a>
+    <a href='#Marketing'>Marketing</a>
+    <a href='#Advertisement'>Advertisement</a>
+  </nav>
+
+  <nav>
+    <h4>Company</h4> 
+    <a href='#AboutUs'>About us</a>
+    <a href='#Contact</'>Contact</a>
+    <a href='#Jobs</'>Jobs</a>
+    <a href='#PressKit'>Press kit</a>
+  </nav>
+
+  <nav>
+    <h4>Legal</h4> 
+    <a href='#TermsOfUse'>Terms of use</a>
+    <a href='#PrivacyPolicy'>Privacy policy</a>
+    <a href='#CookiePolicy'>Cookie policy</a>
+  </nav>
+</footer>
+`}
+  lang='html'
+>
+  <footer>
+    <nav>
+      <h4>Services</h4>
+      <a href='#branding'>Branding</a>
+      <a href='#Design'>Design</a>
+      <a href='#Marketing'>Marketing</a>
+      <a href='#Advertisement'>Advertisement</a>
+    </nav>
+
+    <nav>
+      <h4>Company</h4> 
+      <a href='#AboutUs'>About us</a>
+      <a href='#Contact</'>Contact</a>
+      <a href='#Jobs</'>Jobs</a>
+      <a href='#PressKit'>Press kit</a>
+    </nav> 
+    <nav>
+      <h4>Legal</h4> 
+      <a href='#TermsOfUse'>Terms of use</a>
+      <a href='#PrivacyPolicy'>Privacy policy</a>
+      <a href='#CookiePolicy'>Cookie policy</a>
+    </nav>
+  </footer>
+</CodePreview>

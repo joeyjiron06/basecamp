@@ -1,0 +1,85 @@
+---
+import DocsLayout from "~/layouts/docs.astro";
+---
+
+<DocsLayout title="Demo">
+  <h2>Form Elements</h2><form>
+    <p>
+      <label>First name</label><br /><input
+        type="text"
+        name="first_name"
+        placeholder="e.g. John"
+      />
+    </p><p>
+      <label>Last name</label><br /><input
+        type="text"
+        name="last_name"
+        placeholder="e.g. Doe"
+      />
+    </p><p>
+      <label>Gender</label><br /><label>
+        <input type="radio" name="gender" value="Male" />&nbsp;Male
+      </label><br /><label>
+        <input type="radio" name="gender" value="Female" />&nbsp;Female
+      </label><br /><label>
+        <input
+          type="radio"
+          name="gender"
+          value="other-none-na"
+        />&nbsp;Non-binary
+      </label>
+    </p><p>
+      <label>Email</label><br /><input
+        type="email"
+        name="email"
+        required=""
+        placeholder="e.g. john.doe@example.com"
+      />
+    </p><p>
+      <label>Phone number</label><br /><input
+        type="tel"
+        name="phone"
+        placeholder="e.g. +49 1234 5678901"
+      />
+    </p><p>
+      <label>Password</label><br /><input type="password" name="password" />
+    </p><p>
+      <label>Country</label><br /><select>
+        <option>Germany</option><option>China</option><option>
+          India
+        </option><option>United States</option><option>Indonesia</option><option
+        >
+          Brazil
+        </option>
+      </select>
+    </p><p>
+      <label>Comments</label><br /><textarea placeholder="What do you think?">
+      </textarea>
+    </p>
+
+    <p>
+      <label>
+        <input type="checkbox" value="terms" />&nbsp;I agree to the <a>
+          terms and conditions
+        </a>
+      </label>
+    </p>
+
+    <fieldset>
+      <label>
+        <input name="terms" type="checkbox" role="switch" />
+        I agree to the Terms
+      </label>
+      <label>
+        <input name="opt-in" type="checkbox" role="switch" checked />
+        Receive news and offers
+      </label>
+    </fieldset>
+
+    <p class="space-x-1">
+      <button>Sign up</button>
+      <button type="reset">Reset form</button>
+      <button disabled>Disabled</button>
+    </p>
+  </form>
+</DocsLayout>

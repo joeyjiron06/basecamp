@@ -1,0 +1,32 @@
+---
+layout: ~/layouts/docs.astro
+title: Dropdown
+subtitle: Create dropdown menus and custom selects with minimal and semantic HTML, without JavaScript.
+---
+
+import Code from '~/components/code.astro';
+import CodePreview from '~/components/codePreview.astro';
+
+
+## Usage
+
+<CodePreview 
+  code={`
+<details class="dropdown">
+  <summary>Open</summary>
+  <ul>
+    <li tabIndex='1'><a>Item 1</a></li>
+    <li tabIndex='1'><a>Item 2</a></li>
+  </ul>
+</details>
+`}
+  lang='html'
+>
+  <details class="dropdown">
+    <summary>Open</summary>
+    <ul>
+      <li tabIndex='1'><a>Item 1</a></li>
+      <li tabIndex='1'><a>Item 2</a></li>
+    </ul>
+  </details>
+</CodePreview>

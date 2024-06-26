@@ -1,0 +1,86 @@
+---
+layout: ~/layouts/docs.astro
+title: Radio
+subtitle: The native <input type="radio"> with a custom and responsive style.
+---
+
+import CodePreview from '~/components/codePreview.astro';
+
+<CodePreview 
+  code={`
+<fieldset>
+  <legend>Language preference:</legend>
+  <label>
+    <input type="radio" name="language" checked />
+    English
+  </label>
+  <label>
+    <input type="radio" name="language" />
+    French
+  </label>
+  <label>
+    <input type="radio" name="language" />
+    Mandarin
+  </label>
+  <label>
+    <input type="radio" name="language" />
+    Thai
+  </label>
+  <label aria-disabled="true">
+    <input type="radio" name="language" disabled />
+    Dothraki
+  </label>
+</fieldset>
+  `}
+  lang='html'
+>
+  <fieldset>
+    <legend>Language preference:</legend>
+    <label>
+      <input type="radio" name="language" checked />
+      English
+    </label>
+    <label>
+      <input type="radio" name="language" />
+      French
+    </label>
+    <label>
+      <input type="radio" name="language" />
+      Mandarin
+    </label>
+    <label>
+      <input type="radio" name="language" />
+      Thai
+    </label>
+    <label aria-disabled="true">
+      <input type="radio" name="language" disabled />
+      Dothraki
+    </label>
+  </fieldset>
+</CodePreview>
+
+## Validation States
+
+
+<CodePreview 
+  code={`
+<fieldset>
+  <label>
+    <input type="radio" name="validation-states" aria-invalid="false" />
+    Valid
+  </label>
+
+  <label>
+    <input type="radio" name="validation-states" aria-invalid="true" />
+    Invalid
+  </label>
+</fieldset>
+  `}
+  lang='html'
+>
+  <fieldset>
+    <label><input type="radio" name="validation-states" aria-invalid="false" />Valid</label>
+
+    <label><input type="radio" name="validation-states" aria-invalid="true" />Invalid</label>
+  </fieldset>
+</CodePreview>

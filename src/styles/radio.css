@@ -1,0 +1,52 @@
+@layer base {
+  input[type="radio"] {
+    @apply w-4 h-4 cursor-pointer appearance-none rounded-full border border-surface-950 bg-opacity-0;
+    @apply dark:border-surface-50 relative;
+
+
+    &:checked::after {
+      content: '';
+      @apply absolute inset-[0.125rem] bg-surface-950 rounded-full;
+      @apply dark:bg-surface-50;
+
+      animation: bg-spring-in 150ms ease-in normal;
+
+      &[aria-invalid="true"] {
+        @apply bg-red-500;
+      }
+    
+      &[aria-invalid="false"] {
+        @apply bg-green-500;
+      }
+    }
+
+    @apply validation-states;
+
+    &:focus-visible {
+      @apply focused;
+    }
+  }
+
+  label:has(input[type="radio"]) {
+    @apply flex items-center gap-2 cursor-pointer;
+
+    & *:not(input[type="radio"]) {
+      @apply pb-0 mb-0;
+    }
+  }
+
+  @keyframes bg-spring-in {
+    from {
+      @apply scale-50;
+    }
+
+    50% {
+      @apply scale-[1.125];
+    }
+
+    to {
+      @apply scale-100;
+    }
+  }
+}
+

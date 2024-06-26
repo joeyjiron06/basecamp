@@ -1,0 +1,50 @@
+---
+layout: ~/layouts/docs.astro
+title: Select
+subtitle: The native <select> is styled like the input for consistency.
+---
+
+
+import CodePreview from '~/components/codePreview.astro';
+
+
+<CodePreview 
+  code={`
+<select>
+  <option>Apples</option>
+  <option>Banannas</option>
+  <option>Cherry</option>
+  <option>Dates</option>
+</select>
+  `}
+  lang='html'
+>
+  <select>
+    <option>Apples</option>
+    <option>Banannas</option>
+    <option>Cherry</option>
+    <option>Dates</option>
+  </select>
+</CodePreview>
+
+## Disabled
+
+
+<CodePreview 
+  code={`
+<select disabled>
+  <option>Apples</option>
+  <option>Banannas</option>
+  <option>Cherry</option>
+  <option>Dates</option>
+</select>
+  `}
+  lang='html'
+>
+  <select disabled>
+    <option>Apples</option>
+    <option>Banannas</option>
+    <option>Cherry</option>
+    <option>Dates</option>
+  </select>
+</CodePreview>
