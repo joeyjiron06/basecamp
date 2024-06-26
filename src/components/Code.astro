@@ -12,6 +12,7 @@ export interface Props
   > {
   rounded?: boolean;
   customClasses?: string;
+  disableCopyButton?: boolean;
 }
 
 const code = Astro.props.code.trim();
@@ -32,7 +33,7 @@ const inline = Astro.props.inline;
   />
 
   {
-    Astro.props.inline ? null : (
+    Astro.props.inline || Astro.props.disableCopyButton ? null : (
       <div class='absolute top-3 right-3'>
         <CopyButton text={code} client:visible />
       </div>

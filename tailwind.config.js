@@ -24,8 +24,4 @@ export default {
       }
     }
   },
-
-  plugins: [
-    require('./src/tailwind.plugin.js'),
-  ],
 }

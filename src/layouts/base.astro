@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import { GithubIcon, MoonIcon, MenuIcon, SunIcon } from 'astro-feather';
 import TwitterLogo from '~/components/twitterLogo.astro';
-import Logo from '~/components/logo.astro';
+// import Logo from '~/components/logo.astro';
 import clsx from 'clsx';
 
 interface Props {
@@ -11,8 +11,6 @@ interface Props {
 }
 
 const { title, autoExpandSidebar } = Astro.props;
-
-const ProjectName = 'Snips';
 ---
 
 <!doctype html>
@@ -39,20 +37,18 @@ const ProjectName = 'Snips';
   <body>
     <header>
       <div
-        class='w-full flex justify-between items-center container px-6 mx-auto'>
-        <div>
-          <Logo />
-        </div>
+        class='container mx-auto flex w-full items-center justify-between px-6'>
+        <a href={import.meta.env.BASE_URL} class='font-light italic'>
+          base <span class='font-black'>Camp</span>
+        </a>
 
         <nav class='flex items-center gap-2'>
           <a
-            class='hidden sm:flex btn btn-ghost'
+            class='btn btn-ghost hidden sm:flex'
             href=`${import.meta.env.BASE_URL}/docs`>Docs</a
           >
 
-          <a
-            href='https://github.com/joeyjiron06/snips'
-            class='btn btn-ghost px-2'>
+          <a href=`${import.meta.env.BASE_URL}` class='btn btn-ghost px-2'>
             <GithubIcon customClasses='w-4 h-4' />
           </a>
 
@@ -72,8 +68,8 @@ const ProjectName = 'Snips';
       <slot />
     </main>
 
-    <footer class='block border-t dark:border-t-surface-800 w-full py-4'>
-      <div class='container px-6 mx-auto'>
+    <footer class='block w-full border-t py-4 dark:border-t-surface-800'>
+      <div class='container mx-auto px-6'>
         <p>
           <small
             >Built by Joey Jiron. The source code is available on GitHub.</small

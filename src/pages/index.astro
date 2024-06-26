@@ -3,80 +3,119 @@ import BaseLayout from '~/layouts/base.astro';
 import { DownloadIcon } from 'astro-feather';
 import Code from '~/components/code.astro';
 
-const ProjectName = 'Snips';
+const ProjectName = 'BaseCamp';
+
+const elementNames = [
+  'accordion',
+  // 'body',
+  'button',
+  'checkbox',
+  'dropdown',
+  'footer',
+  'input',
+  // 'header',
+  // 'link',
+  // 'loading',
+  'modal',
+  // 'progress',
+  'radio',
+  // 'range',
+  'select',
+  'switch',
+  'table',
+  'textarea',
+  'tooltip',
+  ['h1', `${import.meta.env.BASE_URL}/typography`],
+  ['h2', `${import.meta.env.BASE_URL}/typography`],
+  ['h3', `${import.meta.env.BASE_URL}/typography`],
+  ['h4', `${import.meta.env.BASE_URL}/typography`],
+  ['p', `${import.meta.env.BASE_URL}/typography`],
+  ['blockquote', `${import.meta.env.BASE_URL}/typography`],
+  ['a', `${import.meta.env.BASE_URL}/typography`],
+  ['ol', `${import.meta.env.BASE_URL}/typography#lists`],
+  ['ul', `${import.meta.env.BASE_URL}/typography#lists`],
+].map((element) =>
+  Array.isArray(element)
+    ? element
+    : [element, `${import.meta.env.BASE_URL}/components/${element}`],
+);
 ---
 
 <BaseLayout title=`Welcome to ${ProjectName}!`>
   <section class='section -mt-14 pt-32 text-center'>
-    <hgroup>
+    <!-- <hgroup>
       <h1 class='text-4xl sm:text-5xl md:text-6xl font-normal italic'>
         base <span class='font-black'>Camp</span>
       </h1>
       <p>The first "classless" Tailwind CSS framework.</p>
+    </hgroup> -->
+
+    <hgroup class='mb-12'>
+      <h1 class='text-balance text-4xl sm:text-5xl md:text-6xl'>
+        Build modern websites even <span class='relative'
+          >faster
+
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            id='Layer_1'
+            viewBox='0 0 260 15.6'
+            class='absolute left-0 top-full -mt-1 fill-current md:-mt-2'
+            ><path
+              d='M206.8 7.3l-.1.3c.1-.2.2-.3.1-.3zM234.7 10h-.1c-.2.4-.1.3.1 0zM54.8 4.2l-.6-.4c.2.4.4.5.6.4zM17.1 5.1zM34.5 9.6l.1.3c0-.2 0-.3-.1-.3zM22.4 10.8c-.3-.1-.7-.1-1-.1.2.1.7.1 1 .1zM17.5 5c-.1.1-.2.1-.4.2.2-.1.3-.2.4-.2zM52.7 9.8l.5.9c-.1-.3-.3-.6-.5-.9zM19.5 11.6c-.2-.2-.4-.2-.6-.3 0 .2.3.3.6.3zM120.9 11.4c-.1.1-.2.2-.2.3.3-.1.3-.2.2-.3zM80.9 10.4h-.1s.1.1.2.1l-.1-.1zM92.6 10.4l-.2.2c.2-.1.2-.1.2-.2zM72.1 11.3c-.1.1-.3.2-.4.3l.4-.3z'
+            ></path><path
+              d='M260 6c-1-.6-4.7-1.2-5.8.3-.2-.1.1-.3.2-.4-.9.2-2.2.1-3.6 0s-2.9-.2-4.2 0c-1 1.5-3.9-.6-4.8 1.4l.5-.4c.9.5-1.2 1.4-1.5 1.9-.8-1.2-.1-1-1-2l1.1.4-.3-1c-3.1 2.8-6.2-.9-8.2 1.1.1-.1.1-.3.2-.4-1.4-.5-2.3.8-3.3 1.2-.1-.5.6-.9 1.1-1.3-2.4-.3-6.4 1.2-9 .4-.9.7.4.9-.6 1.5-.8-.2-1.4-.7-.4-1.1-2.3-1.2-7.6 1-11.1-.2-1.8.8-.7 1.1-3.5 1.6.7-.5-.7-1.7 1-1.7l.2-.5c-2.8-.1-6.6-.3-8.1 1.2-.1-1.1-.5-.2-1.6-.8-.4.1 0 .2.2.2-1 .9-1.6-.1-2.3.1l.3-.2-2 .7c-.3-.2-.8-.4-.9-.7v.8c-1.1 0-.5-1-1.9-.8l.3.6c-.9-.4-2.2.4-2.4-.5 0-.2.1-.1.4-.1-1.3-1.2-3.5.3-5.1-.3l.4 1.3c-1.6.4-1-.3-.9-.7-1.1 0-1.3-.4-2.7-.6-.7.3-.4.5-.6.8l-1.5-.4 1-.7c-2.3 1.8-5.6-.4-7.2 1.2-.8-.4.8-.7.3-1-2.6-.9-6 1-8.2 0-3.6-1-7.8-.4-11.8-1.1l.1.3-2.9-.4c-.8.7-2.7.3-4 1.1.1-.3-.1-.7.2-.9-1.2.1-2.6.4-3.3-.1l.4-.3c-2.7-.3-6.4-.5-7.9.1-.9 0-.9-.6-1.1-1-1.6-.1-2.6.2-3.9.7-.3-.2-.7-.3-1-.6l-.6.8c-.6-.1-.1-.7-.6-.9-2.5.9-5.3-.1-7-.1l.2.4c-.7.3-2.1-.3-1.2-.7-3.4-.6-5.1 1.2-9.6.8-.6-1.5-4.1.3-4.8-1.4-1.9.4-3.2-.3-4.5.6 0-.2-.2-.2.1-.3-.8-.6-3.3-.2-5.3.2l-.1-.5c-.9 1.2-4.2.9-4.9 2-.2-.2.4-.5.7-.7-1-1.1-1.8.5-3.1.2.1-.3-.3-.6 0-.8-4.4-1.2-10.6.7-16.3-.1-1.6 0 .6 1.2-1.5 1.1-.6-.6 1-1.1-.3-1.4-.9.7-1.3.5-2.6.5.2-.4 0-.6.9-.9-.7-.5-3.1.9-4.5 0 .1.3-.2.5-.5.7-2.1 1-4.9-.9-5.1-.4 0 0-.7.2-.1.3-.8 0-1.9-.2-1.7-.7-.4.3-.8.8-1.4.8l.3-.6c-.4.1-.8.5-1.1.6l.6.4c-.9-.5-2.6.8-2.6-.4h.3l-1.7-.5c-.7.5-1.3 1-2.5.9-.5-1.3-2.9-.2-4.3-.3l.1-.4c-1.1.6-4 .4-3.5.6-1.1 0-2.6-.2-2-.6-.8.1-2.7.1-3.2.9l-1.8-1c-1 1.6-3.6-.5-3.6 1.2-1-.2-.8-.6-1.5-.9-1.4.9-2.8.8-4.2.7v-.2c-1.4-.1-3.1.8-5.1 1l-.5-1.2c-1 .2-1.3 1.2-2.3 1-.2-.2 0-.3.2-.3-1 .3-2.3.1-3.1-.2-1.5 1-2.7.7-3.9 1.8-1.3-1 1.7-.6.6-1.6-2.2-.4-4.4.4-6.7 1.1-.2-.2 0-.4.1-.7 0 0-1.2.9-2.2 1.8C.9 8.3 0 9.4.5 10c-.5.9-1.2 1.4.9 2 .6-.5 2.5-1.3 2.9-.4l.1-.9c2.6-.6.4 1.8 3.6 1.6l-.7-.3c.6-.1 1.1-.7 1.8-.5.2.2-.2.4-.5.6.9-.5 1.7-.9 2.6-1.4.1.5.1.8-.4 1.2 2.5-.2-.6-1.6 2.4-1.4.6.4-.2.6-.5.9 1.4.7 2.3-.1 3.8-.6.1.8-.9.7.3 1.2-.3-.4-.5-1.1.5-1.2-.4.8.7.4 1.6.5-.2-.3-.1-.6.2-.8.4-.1.8.1 1.4.1l-1.1-.7c1.5-.8 2.4.3 3.6.6-.1.1-.3.3-.5.3 1.2.3 2.5.9 4.1.1l-.3.1c2.9-.9-1-1.3 2.4-2.2 1.1.1-.4 2.6 2.1 1.6-1.3-.6 1.6-1.7 3.1-2L32.4 10c.6 0 1.6-.5 2-.3l-.1-.3c-.2-1.3 1.9.1 3-.7-1.3 1.8-1.4 1.5-1.6 3.2 1-1 2.2-1.9 4.1-1.8l-1.5 1.4c2.5.2 5.5-1.9 7.6-3-.5 1 .3 1.4-.6 2.2l2.4-.3-.7 1.1c1-1.2 2.1-.4 1.9-1.9-.3.2-.2.4-.7.3.1-.4.5-1.4 1.7-1.3.9.3-.5.6-.2 1 .8-.6.9.3 1.7-.1l-.8-.6c.6-.9 1.4-.1 2.2-.5-1 .4-.7.9-.3 1.4l-.1-.1c.8-.1 1.6-.7 2-.2l-.5 1.2.9-.9c.3.1.6.6 0 .8 2.8.7-.1-2.5 3.6-1.5 0 .5-.4.8-1.4.5-.2.7.1 1.1 1.1 1.4v.1c1.9 0 4.4 0 5.6-.8.4.3 0 .6-.4.9 2.1.4 2.8-.7 5 .1l-1-.4c1.4-.6 4-.8 5.3.1l-.4.3c1.3-.7 3.5.6 4 0-.6-.4 0-.6-.8-1l3.4-.7.2 1.2 1.8-.4c-.4-.5 2.4.4 2.5-.7 1 .4-.4.9-.8 1.4 1-.3 1.1.2 2.1-.5l1 1.1 2.6-.7c-.1.1 0 .2-.1.3 1.2-.9 3.1.6 4.6-.9-.1.1-.1.1-.1.2.9-.8 2.9-.2 3.7 0 1.4-.2.6-1 .6-1.4 3.9.4 2.7.3 6-.9 2 1.4-2.4 2.1.1 3 .4-.6 2.1-1.1 4.1-1.3 1.8.5 4.8.9 6.5 1.9l-.2-.9 2.6-.4-1.5 1.2c.4-.3 1.7-.8 2.6-1.2 2.7-.7 1.4 1.9 3.5.7.1.1.1.2.2.3.7-.6 2.4-.3 4.4-.5l-.7 1.1-1.3-.3c.7 1.1 2.1-.1 3.4 0 1.3-.3.7-1.3 1.4-1.6.5.1 1.2-.2 1.6.1 1.1.4.1 1.3-.3 1.8 1-1.1 1.4-.9 3.6-1.3.1.5-.1.8-.4.9.5-.1.9-.3 1.2-.8l.7.7c2.5 1 2.6-2 5.6-1.5-.8.6 2.6 0 3.5.7-1.1.1.4 1.6-.2 2.3 2.4.5 1-1.3 3-1.4l-.9 1.3c1.9-.5.5-.7 2.4-1.1-.5.4.8.4-.3.8 2.5.2 1.9.1 4.1.3l.2-1.3c.7-.1 1 .5 1.2.7-.3 0-.8-.1-.7.1.8 1.2 1.4-.6 2.4.5-.2-.4-.5-1 .4-1.1-.3.8 1.4.8 1.4 1.2-.6-.6 2-.2 2.1-1 1 .7-.4.6-.4 1.1.9-1 3.7 0 4.6-.6 0 .1.1.1.1.2 1.2-.6 3-.7 5.3-1.5l-.8.7c2.2.4 1.4-1.5 3.3-1.5-.4 1.1 3.1 0 2.2 1.2 1.1-.6 2.3-.8 3.1-1.7 1 .6-2.1 1.4-.6 1.8l1.6-.5.3.6c.1-.4 1.5-.4 1.4-.8.2.7.9 1.2.8 1.8 1-.2 2.4.5 3.3-.1l.1.3c1-1.3 3.1-.2 3.6-1.5l.6.7c1.5-.1 1.3-1.5 2-1.8.6 0 1.4-.2 2 0-2 .8 1 1.1 1.4 1.6.8 0 3.1 0 3.7-.7-1 .7-.4 1.2-2.1 1.3.9 1.3 2.6-.2 4.5-.1v.6c2.7-.4 2.8-1.5 4-2.5.3.8.1 1-.7 1.7 1.8.5 4.7-.1 6.7 0 .6.5.2.9-.5 1.1 2.1-.6 4.7.1 6-1.2-.5.5.9.3 1.6.6 0-.3.1-.6.2-.6 1.3-.6 4.1-1.1 5.6-.7l-.5.4c1.7.1 3-.5 4.3-.9 1.3-.4 2.6-.8 4.5-.4.7.3-.7 1.1.7 1 .7-.5.4-1.5 2.2-1.3l-.1.9 1.2-.9c-.7-.7-2.6-.4-1.3-1.2 1.6.8 1.3-.9 3.3 0-.4.1-1 .8-1.3 1.2 2 .4 3.4.1 4.8-.1 1.4-.3 2.8-.6 4.9-.2 2-.8 4.6-1.2 5.9-1.9 0 .9 0 1.7-.8 2.4 1.8 0 2.4-2.1 3.7-.9.7-1.3 4.7-1.2 5-3l2-.8z'
+            ></path><path
+              d='M58.1 11.1c-1 0-1.9 0-2.3.2.2.2 2.3.6 2.3-.2zM208.2 13.3c-.1 0-.3.1-.4.1.1 0 .3 0 .4-.1zM216.3 12.9c-.1-.1-.2-.2-.4-.3 0 .3.1.5.4.3zM132.6 11.5zM178.5 13.7c.7-.4 1-.7 1-1-.4.1-.7.3-1 1zM163 12.6c-.1.1-.2.1-.3.2.3-.1.3-.2.3-.2zM130.2 12c.7-.4 1.6-.3 2.4-.5-.7.2-1.9-.3-2.4.5zM226.1 11.4l-.7.6.8-.4zM218.6 12c-.3-.1-1.7.3-1.3.6.4-.3.9-.5 1.3-.6zM189.6 11.4l-.3.6.7-.5z'
+            ></path></svg
+          >
+        </span>
+      </h1>
+      <p class='text-balance'>
+        With <b><i>base Camp</i></b> you can harness the power of the browser with
+        styled native html elements
+      </p>
     </hgroup>
 
-    <button><DownloadIcon customClasses='mr-2' /> Download</button>
+    <button class='mb-12'><DownloadIcon customClasses='mr-2' /> Download</button
+    >
   </section>
 
-  <section class='w-full py-20 space-y-4 text-sm'>
-    <div class='overflow-x-scroll flex gap-2 items-start'>
-      <span class='element-tag'>accordion</span>
-      <span class='element-tag'>body</span>
-      <span class='element-tag'>button</span>
-      <span class='element-tag'>checkbox</span>
-      <span class='element-tag'>dropdown</span>
-      <span class='element-tag'>input</span>
-      <span class='element-tag'>header</span>
-      <span class='element-tag'>footer</span>
-      <span class='element-tag'>modal</span>
-      <span class='element-tag'>radio</span>
-      <span class='element-tag'>select</span>
-      <span class='element-tag'>switch</span>
-      <span class='element-tag'>table</span>
-      <span class='element-tag'>textarea</span>
-      <span class='element-tag'>tooltip</span>
-      <span class='element-tag'>h1</span>
-      <span class='element-tag'>h2</span>
-      <span class='element-tag'>h3</span>
-      <span class='element-tag'>h4</span>
-      <span class='element-tag'>p</span>
-      <span class='element-tag'>blockquote</span>
-      <span class='element-tag'>a</span>
-      <span class='element-tag'>ol</span>
-      <span class='element-tag'>ul</span>
+  <section class='w-full space-y-4 py-20 text-sm'>
+    <div class='marquee'>
+      <ul>
+        {
+          elementNames.map(([elementName, url]) => (
+            <li class='element-tag'>
+              <a href={url}>{elementName}</a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
 
-    <div class='overflow-x-scroll flex gap-2 items-start'>
-      <span class='element-tag'>accordion</span>
-      <span class='element-tag'>body</span>
-      <span class='element-tag'>button</span>
-      <span class='element-tag'>checkbox</span>
-      <span class='element-tag'>dropdown</span>
-      <span class='element-tag'>input</span>
-      <span class='element-tag'>header</span>
-      <span class='element-tag'>footer</span>
-      <span class='element-tag'>modal</span>
-      <span class='element-tag'>radio</span>
-      <span class='element-tag'>select</span>
-      <span class='element-tag'>switch</span>
-      <span class='element-tag'>table</span>
-      <span class='element-tag'>textarea</span>
-      <span class='element-tag'>tooltip</span>
-      <span class='element-tag'>h1</span>
-      <span class='element-tag'>h2</span>
-      <span class='element-tag'>h3</span>
-      <span class='element-tag'>h4</span>
-      <span class='element-tag'>p</span>
-      <span class='element-tag'>blockquote</span>
-      <span class='element-tag'>a</span>
-      <span class='element-tag'>ol</span>
-      <span class='element-tag'>ul</span>
+    <div
+      class='marquee'
+      style='--marquee-duration: 75s; --marquee-direction: reverse;'>
+      <ul>
+        {
+          elementNames.map(([elementName, url]) => (
+            <li class='element-tag'>
+              <a href={url}>{elementName}</a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
   <section class='section'>
-    <div class='grid grid-cols-1 md:grid-cols-4 grid-rows-4 gap-3 w-full'>
-      <div class='md:col-span-2 md:row-span-2 bento-card'>
+    <hgroup class='mb-10 text-center'>
+      <h2>A Better Tailwind Base</h2>
+      <p>Using TailwindCSS to style <u>native</u> HTML elements</p>
+    </hgroup>
+
+    <div class='grid w-full grid-cols-1 grid-rows-4 gap-3 md:grid-cols-4'>
+      <div class='bento-card md:col-span-2 md:row-span-2'>
         <h2>Accordion</h2>
 
         <details>
@@ -95,14 +134,14 @@ const ProjectName = 'Snips';
           </p>
         </details>
       </div>
-      <div class='md:col-span-2 md:row-span-1 bento-card'>
+      <div class='bento-card md:col-span-2 md:row-span-1'>
         <h2>Button</h2>
 
         <div class='flex flex-col gap-2'>
           <button>Hi 👋!</button>
         </div>
       </div>
-      <div class='md:col-span-2 md:row-span-1 bento-card'>
+      <div class='bento-card md:col-span-2 md:row-span-1'>
         <h2>Checkbox</h2>
 
         <label>
@@ -119,7 +158,7 @@ const ProjectName = 'Snips';
           Spanish
         </label>
       </div>
-      <div class='md:col-span-1 md:row-span-2 bento-card'>
+      <div class='bento-card md:col-span-1 md:row-span-2'>
         <h2>Dropdown</h2>
         <details class='dropdown'>
           <summary>Open Me!</summary>
@@ -129,7 +168,7 @@ const ProjectName = 'Snips';
           </ul>
         </details>
       </div>
-      <div class='md:col-span-2 md:row-span-2 bento-card'>
+      <div class='bento-card md:col-span-2 md:row-span-2'>
         <h2>Inputs</h2>
 
         <div class='flex flex-col gap-2'>
@@ -145,7 +184,7 @@ const ProjectName = 'Snips';
               viewBox='0 0 24 24'
               stroke-width='1.5'
               stroke='currentColor'
-              class='w-6 h-6'>
+              class='h-6 w-6'>
               <path
                 stroke-linecap='round'
                 stroke-linejoin='round'
@@ -169,7 +208,7 @@ const ProjectName = 'Snips';
           </div>
         </div>
       </div>
-      <div class='md:col-span-1 md:row-span-2 bento-card'>
+      <div class='bento-card md:col-span-1 md:row-span-2'>
         <h2>Switch</h2>
         <label>
           <input type='checkbox' role='switch' />
@@ -180,94 +219,230 @@ const ProjectName = 'Snips';
   </section>
 
   <section class='section py-12'>
-    <hgroup>
-      <h2>Tired of writing a <b>TON</b> of classnames?</h2>
+    <hgroup class='text-center'>
+      <h2>Writing TOO MANY class names?</h2>
       <p>For every element, every page, every project, again and again…</p>
     </hgroup>
 
-    <div>
-      <h3>Before</h3>
-      <Code
-        lang='html'
-        code=`
-<button class="h-9 min-h-9 inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-normal transition-colors px-4 py-2 cursor-pointer border-transparent border bg-surface-950 text-foreground-50 duration-150 hover:bg-opacity-90">Hi 👋!</button>
+    <div class='grid grid-cols-1 gap-6 md:grid-cols-2'>
+      <div>
+        <p><span class='align-middle text-xl'>🤬</span> from this nonsense</p>
+
+        <Code
+          lang='html'
+          code=`
+<button class="h-9 min-h-9 inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-normal transition-colors px-4 py-2 cursor-pointer border-transparent border bg-surface-950 text-foreground-50 duration-150 hover:bg-opacity-90">Click Me 🤓!</button>
 `
-        customClasses='px-4 py-6 overflow-x-hidden text-wrap'
-      />
+          disableCopyButton
+          customClasses='px-4 py-6 overflow-x-hidden text-wrap mt-2'
+        />
+      </div>
 
-      <h3>After</h3>
-      <Code
-        lang='html'
-        code=`
-<button>Hi 👋!</button>
-`
-        customClasses='px-4 py-6 overflow-x-hidden text-wrap'
-      />
+      <div>
+        <p><span class='align-middle text-xl'>😎</span> to simplicity</p>
 
-      <h3>Result</h3>
+        <Code
+          lang='html'
+          code=`<button>Click Me 🤓!</button>`
+          customClasses='px-4 py-6 overflow-x-hidden text-wrap mt-2'
+          disableCopyButton
+        />
 
-      <button>Hi 👋!</button>
+        <!-- <h3>Result</h3> -->
+      </div>
+      <!-- <hgroup class='text-center'>
+        <h3>Just use <u>Native</u> html elements</h3>
+        <p>And get beautiful styling out of the box</p>
+      </hgroup> -->
     </div>
+
+    <button class='mx-auto mt-6 block'>Click Me 🤓!</button>
+  </section>
+
+  <section class='section skewed-section py-12'>
+    <hgroup>
+      <h2 class='text-opposite'>
+        Goodbye JS Frameworks, <u>hello</u> HTML & CSS
+      </h2>
+      <p class='text-opposite'>
+        HTML elements have become super powerful, just harness it's power and
+        you'd be amazed at what you can do!
+      </p>
+    </hgroup>
   </section>
 
   <!-- benefits -->
 
-  <section></section>
+  <section class='section container m-auto px-6 py-12 md:px-12 xl:px-0'>
+    <div class='mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3'>
+      <div
+        class='rounded-3xl border border-surface-100 bg-surface-200 px-8 pt-12 shadow-2xl shadow-surface-600/10 sm:px-12 lg:px-8 dark:border-surface-700 dark:bg-surface-800 dark:shadow-none'>
+        <div class='mb-12 space-y-4'>
+          <h3 class='text-2xl font-semibold'>
+            Effortless Integration, Maximum Impact
+          </h3>
+          <p class='mb-6'>
+            Seamless Tailwind CSS Integration: This library is built on the
+            principles of Tailwind CSS, ensuring that you can integrate it
+            effortlessly into your existing projects without any compatibility
+            concerns.
+          </p>
+        </div>
+      </div>
 
-  <!-- 
-26+ components
+      <div
+        class='rounded-3xl border border-surface-100 bg-surface-200 px-8 pt-12 shadow-2xl shadow-surface-600/10 sm:px-12 lg:px-8 dark:border-surface-700 dark:bg-surface-800 dark:shadow-none'>
+        <div class='mb-12 space-y-4'>
+          <h3 class='text-2xl font-semibold'>
+            Design Consistency, Uncompromised Flexibility
+          </h3>
+          <p class='mb-6'>
+            Native HTML Element Styling: Enjoy consistent, beautiful styles out
+            of the box for all native HTML elements, or take full control to
+            customize the styles to fit your unique brand identity.
+          </p>
+        </div>
+      </div>
 
-**Effortless Integration, Maximum Impact**
-- *Seamless Tailwind CSS Integration*: Our library is built on the principles of Tailwind CSS, ensuring that you can integrate it effortlessly into your existing projects without any compatibility concerns.
+      <!-- <div
+        class='border border-surface-100 dark:border-surface-700 rounded-3xl bg-surface-200 dark:bg-surface-800 px-8 pt-12 shadow-2xl shadow-surface-600/10 dark:shadow-none sm:px-12 lg:px-8'>
+        <div class='mb-12 space-y-4'>
+          <h3 class='text-2xl font-semibold'>
+            Developer-Friendly, Community-Driven
+          </h3>
+          <p class='mb-6'>
+            Open Source Collaboration: As an open source library, we encourage
+            and support community contributions, making our CSS library
+            constantly evolve with the needs and innovations of developers like
+            you.
+          </p>
+        </div>
+      </div> -->
 
-**Design Consistency, Uncompromised Flexibility**
-- *Native HTML Element Styling*: Enjoy consistent, beautiful styles out of the box for all native HTML elements, or take full control to customize the styles to fit your unique brand identity.
-
-**Developer-Friendly, Community-Driven**
-- *Open Source Collaboration*: As an open source library, we encourage and support community contributions, making our CSS library constantly evolve with the needs and innovations of developers like you.
-
-**Lightweight Code, Heavyweight Performance**
-- *Optimized for Speed*: Our CSS library is designed to be lightweight, ensuring that your website loads quickly, providing a better user experience and improving SEO rankings.
-
-**Future-Proof Your Project**
-- *Regular Updates and Improvements*: With a commitment to staying up-to-date with the latest web standards, our library ensures that your project remains at the forefront of web design trends and best practices.
-
- -->
+      <div
+        class='rounded-3xl border border-surface-100 bg-surface-200 px-8 pt-12 shadow-2xl shadow-surface-600/10 sm:px-12 lg:px-8 dark:border-surface-700 dark:bg-surface-800 dark:shadow-none'>
+        <div class='mb-12 space-y-4'>
+          <h3 class='text-2xl font-semibold'>
+            Lightweight Code, Heavyweight Performance
+          </h3>
+          <p class='mb-6'>
+            Optimized for Speed: Our CSS library is designed to be lightweight,
+            ensuring that your website loads quickly, providing a better user
+            experience and improving SEO rankings.
+          </p>
+        </div>
+      </div>
+      <!-- 
+      <div
+        class='border border-surface-100 dark:border-surface-700 rounded-3xl bg-surface-200 dark:bg-surface-800 px-8 pt-12 shadow-2xl shadow-surface-600/10 dark:shadow-none sm:px-12 lg:px-8'>
+        <div class='mb-12 space-y-4'>
+          <h3 class='text-2xl font-semibold'>Future-Proof Your Project</h3>
+          <p class='mb-6'>
+            Regular Updates and Improvements: With a commitment to staying
+            up-to-date with the latest web standards, our library ensures that
+            your project remains at the forefront of web design trends and best
+            practices.
+          </p>
+        </div>
+      </div> -->
+    </div>
+  </section>
 </BaseLayout>
 
-<!-- 
-  accordion
-  body
-  button
-  checkbox
-  dropdown
-  input
-  header
-  footer
-  modal
-  radio
-  select
-  switch
-  table
-  textarea
-  tooltip
-  h1 - h4
-  p
-  blockquote
-  a
-  ol
-  ul
- -->
+<script>
+  function addMarqueeAnimation() {
+    const marqueeElements = document.querySelectorAll('.marquee');
 
+    marqueeElements.forEach((marquee) => {
+      const list = marquee.querySelector('ul');
+      if (list) {
+        const listItems = list.querySelectorAll('li');
+
+        listItems.forEach((item) => {
+          const itemCopy = item.cloneNode(true) as HTMLLIElement;
+          itemCopy.setAttribute('aria-hidden', 'true');
+          list.appendChild(itemCopy);
+        });
+      }
+    });
+  }
+
+  // If a user hasn't opted in for recuded motion, then we add the animation
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    addMarqueeAnimation();
+  }
+</script>
 <style>
   .section {
-    @apply container px-6 mx-auto;
+    @apply container mx-auto px-6;
   }
 
   .element-tag {
-    @apply px-4 py-2 bg-brand-300 text-brand-950 rounded border-b-8 border-b-brand-700 cursor-pointer;
+    @apply relative z-10 cursor-pointer rounded border-b-8 border-b-brand-700 bg-brand-300 px-4 py-2 text-brand-950;
   }
   .bento-card {
-    @apply px-3 py-6 bg-surface-200 dark:bg-surface-900 rounded;
+    @apply rounded bg-surface-200 px-3 py-6 dark:bg-surface-900;
+  }
+
+  hgroup h2 {
+    @apply text-balance text-3xl md:text-4xl;
+  }
+
+  hgroup p {
+    @apply text-balance;
+  }
+
+  .bg-opposite {
+    @apply bg-surface-950 dark:bg-surface-50;
+  }
+
+  .text-opposite {
+    @apply text-foreground-50 dark:text-foreground-950;
+  }
+
+  .skewed-section {
+    @apply relative z-0 mb-10 py-40;
+  }
+
+  .skewed-section::before {
+    @apply bg-opposite absolute inset-0 -z-10 -skew-y-2 rounded-xl;
+    content: '';
+  }
+  .marquee {
+    --gap: 1rem;
+    --marquee-duration: 60s;
+    --marquee-direction: forwards;
+
+    @apply mx-auto overflow-hidden whitespace-nowrap;
+
+    /* mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent); */
+
+    ul {
+      @apply my-0 inline-flex w-fit list-none pl-0;
+
+      animation-name: marquee;
+      animation-duration: var(--marquee-duration);
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: var(--marquee-direction);
+
+      li {
+        @apply inline-block py-1;
+
+        margin-right: var(--gap, 1rem);
+      }
+    }
+
+    &:hover {
+      ul {
+        animation-play-state: paused;
+      }
+    }
+  }
+
+  @keyframes marquee {
+    100% {
+      transform: translateX(-50%);
+    }
   }
 </style>

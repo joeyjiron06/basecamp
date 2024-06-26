@@ -43,14 +43,14 @@
   }
 
   .btn-accent {
-    @apply bg-accent-500 text-foreground-900;
+    @apply bg-brand-500 text-foreground-900;
 
     &:hover {
       @apply bg-opacity-90;
     }
 
     &:focus-visible {
-      @apply outline-accent-500;
+      @apply outline-brand-500;
     }
   }
 
@@ -65,10 +65,10 @@
     }
 
     &.btn-accent {
-      @apply text-accent-500 border-accent-500;
+      @apply text-brand-500 border-brand-500;
 
       &:hover {
-        @apply bg-accent-500 text-foreground-900;
+        @apply bg-brand-500 text-foreground-900;
       }
     }
   }

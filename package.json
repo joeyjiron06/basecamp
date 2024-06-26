@@ -1,5 +1,5 @@
 {
-  "name": "tailbase",
+  "name": "basecamp",
   "type": "module",
   "version": "0.0.1",
   "license": "MIT",
@@ -45,6 +45,7 @@
     "postcss-js": "^4.0.1",
     "prejss": "^1.4.0",
     "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "print-diff": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
