@@ -3,7 +3,6 @@ import { Code as AstroCode } from 'astro:components';
 import type { ComponentProps } from 'astro/types';
 import CopyButton from './copyButton';
 import clsx from 'clsx';
-import type { boolean, string } from 'astro/zod';
 
 export interface Props
   extends Pick<
@@ -34,7 +33,7 @@ const inline = Astro.props.inline;
 
   {
     Astro.props.inline || Astro.props.disableCopyButton ? null : (
-      <div class='absolute top-3 right-3'>
+      <div class='absolute right-3 top-3'>
         <CopyButton text={code} client:visible />
       </div>
     )

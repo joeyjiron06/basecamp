@@ -1,14 +1,12 @@
 ---
 import Code from './code.astro';
 import type { Props as CodeProps } from './code.astro';
-import type { ComponentProps } from 'astro/types';
-import CopyButton from './copyButton';
 
 interface Props extends CodeProps {}
 ---
 
 <div
-  class='border-surface-500 border dark:border-surface-800 border-opacity-10 rounded'>
+  class='rounded border border-surface-500 border-opacity-10 dark:border-surface-800'>
   <div class='px-6 py-12'>
     <slot />
   </div>

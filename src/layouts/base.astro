@@ -1,16 +1,14 @@
 ---
 import '../styles/global.css';
-import { GithubIcon, MoonIcon, MenuIcon, SunIcon } from 'astro-feather';
+import { GithubIcon, MoonIcon, SunIcon } from 'astro-feather';
 import TwitterLogo from '~/components/twitterLogo.astro';
-// import Logo from '~/components/logo.astro';
-import clsx from 'clsx';
 
 interface Props {
   title: string;
   autoExpandSidebar?: boolean;
 }
 
-const { title, autoExpandSidebar } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
